@@ -53,4 +53,41 @@ public class Grid {
     public void setGrid(Cell[][] grid) {
         this.grid = grid;
     }
+
+
+    public String maxOfColors(){
+
+        int countPrincess = 0;
+
+        for (int y = 0; y < 4; y++){
+            for (int x = 0; x < 4; x++){
+                if (this.grid[x][y].card.getColor().equals("princess")){
+                    countPrincess++;
+                }
+            }
+        }
+
+        if (countPrincess > 8){
+            return "princess";
+        } else if (countPrincess == 8){
+            return "equality";
+        } else {
+            return "zerg";
+        }
+    }
+
+    public boolean isFull(){
+        for (int y = 0; y < 4; y++){
+            for (int x = 0; x < 4;){
+                if (!this.grid[x][y].isEmpty()){
+                    x++;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
 }

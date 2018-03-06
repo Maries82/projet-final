@@ -8,6 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -39,9 +40,17 @@ public class DeckWs {
         List<Card> handList = new ArrayList<>();
         String color = cards.get(0).getColor();
 
-        for (int index = 0; index < 6; index++){
-            handList.add(new Card(cards.get(index).getUp(), cards.get(index).getRight(),cards.get(index).getDown(), cards.get(index).getLeft()));
+        for (int index = 0; index < 8; index++){
+            handList.add(new Card(
+                    cards.get(index).getOrder(),
+                    cards.get(index).getUp(),
+                    cards.get(index).getRight(),
+                    cards.get(index).getDown(),
+                    cards.get(index).getLeft(),
+                    color));
         }
+
+        Collections.sort(handList);
 
         Hand hand = new Hand(color, handList);
         System.out.println(hand);
