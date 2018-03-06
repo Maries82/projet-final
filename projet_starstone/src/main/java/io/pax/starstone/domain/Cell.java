@@ -68,4 +68,11 @@ public class Cell {
 
        return 0;
    }
+
+   // retourne vrai si un des nombres en parametres aditionées aux coordonnées de la case fait dépasser de la grille
+    public boolean isOutOfGrid(int i, int j){
+        if(this.getX() + i > 4 || this.getX() + i < 0 || this.getY() + j > 4 || this.getY() + j < 0)
+            return true;
+        return false;
+    }
 }

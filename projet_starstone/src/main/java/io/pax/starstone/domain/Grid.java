@@ -10,30 +10,59 @@ public class Grid {
     }
 
 
-
+    //
     public void insertCard(int x, int y, Card card) {
 
-        // placement de la carte sur
-        grid[x][y].setCard(card);
+        // placement de la carte dans la grille
+        this.grid[x][y].setCard(card);
+        Cell currentCell = this.grid[x][y];
 
         // recherche des cases adjacentes à la case séléctionnée
-        for (int i = -1; i < 2; i += 2) {
-            for (int j = -1; j < 2; j += 2) {
+        for (int i = -1; i < 2; i++) {
+            for (int j = -1; j < 2; j++) {
+
+                Cell adjacentCell = this.grid[x+i][y+j];
 
                 // gestion des cases hors tableau
-                if (x + i > 3 || x + j > 3 || x + i < 0 || x + j < 0 || y + i > 3 || y + j > 3 || y + i < 0 || y + j < 0) {
+                if (x + i > 4 ||  x + i < 0 ||  y + j > 4 || y + j < 0 || (i!=0 && j != 0) ||( i==0 && j==0)) {
                     System.out.println("la case est hors tableau");
                 }
 
                 // je vérifie que la case adjacente possède une carte
-                else if (!(this.grid[x + i][y + j].isEmpty())) {
+                else if (!(adjacentCell.isEmpty())) {
 
                     // je regarde si la carte adjacente est de couleur differente
-                    if ((grid[x + i][y + j].getCard().hasDifferentColor(grid[x][y].getCard()))) {
+                    if (adjacentCell.getCard().hasDifferentColor(currentCell.getCard())) {
 
 
                         // Je regarde la position de la case adjacente par rapport à ma case
+                        int pos = currentCell.returnAdjacentCellPosition(adjacentCell);
 
+                        // Si la case est au dessus
+                        if (pos == 0 ){
+                            if (currentCell.getCard().getUp() > adjacentCell.getCard().getDown()){
+                                this.grid[x+i][x+j].getCard().setColor(currentCell.getCard().getColor());
+                                System.out.println(adjacentCell.getCard().toString()+"A changé de couleur");
+                            }
+                        }
+                        // Si la case est à droite
+                        if (pos == 1 ){
+                            if (currentCell.getCard().getRight() > adjacentCell.getCard().getLeft()){
+                                this.grid[x+i][x+j].getCard().setColor(currentCell.getCard().getColor());
+                            }
+                        }
+                        // Si la case est en dessous
+                        if (pos == 2 ){
+                            if (currentCell.getCard().getDown() > adjacentCell.getCard().getUp()){
+                                this.grid[x+i][x+j].getCard().setColor(currentCell.getCard().getColor());
+                            }
+                        }
+                        // Si la case est à gauche
+                        if (pos == 3 ){
+                            if (currentCell.getCard().getLeft() > adjacentCell.getCard().getRight()){
+                                this.grid[x+i][x+j].getCard().setColor(currentCell.getCard().getColor());
+                            }
+                        }
                     }
                 }
 
@@ -54,40 +83,8 @@ public class Grid {
         this.grid = grid;
     }
 
-
-    public String maxOfColors(){
-
-        int countPrincess = 0;
-
-        for (int y = 0; y < 4; y++){
-            for (int x = 0; x < 4; x++){
-                if (this.grid[x][y].card.getColor().equals("princess")){
-                    countPrincess++;
-                }
-            }
-        }
-
-        if (countPrincess > 8){
-            return "princess";
-        } else if (countPrincess == 8){
-            return "equality";
-        } else {
-            return "zerg";
-        }
+    @Override
+    public String toString() {
+        return super.toString();
     }
-
-    public boolean isFull(){
-        for (int y = 0; y < 4; y++){
-            for (int x = 0; x < 4;){
-                if (!this.grid[x][y].isEmpty()){
-                    x++;
-                } else {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
 }
