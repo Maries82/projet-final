@@ -81,6 +81,12 @@ public class Card {
     }
 
 
+    public boolean hasDifferentColor(Card card){
+        if (this.getColor().equals(card.getColor())){
+            return false;
+        }
+        else return true;
+    }
 
 }
 

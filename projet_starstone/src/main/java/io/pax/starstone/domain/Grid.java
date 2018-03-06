@@ -25,11 +25,14 @@ public class Grid {
                     System.out.println("la case est hors tableau");
                 }
 
-                // je vérifie que la case possède une carte
-                else if (!(grid[x + i][y + j].isEmpty())) {
+                // je vérifie que la case adjacente possède une carte
+                else if (!(this.grid[x + i][y + j].isEmpty())) {
 
                     // je regarde si la carte adjacente est de couleur differente
-                    if (!(grid[x + i][y + j].getCard().getColor().equals(card.getColor()))) {
+                    if ((grid[x + i][y + j].getCard().hasDifferentColor(grid[x][y].getCard()))) {
+
+
+                        // Je regarde la position de la case adjacente par rapport à ma case
 
                     }
                 }
