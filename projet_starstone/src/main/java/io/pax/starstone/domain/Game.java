@@ -1,5 +1,8 @@
 package io.pax.starstone.domain;
 
+import io.pax.starstone.dao.DeckDao;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +37,7 @@ public class Game {
         return randomHand;
     }
 
-    // génère une main de 6 cartes au hasard
+/*    // génère une main de 6 cartes au hasard
     public static Hand generateRandomHand(){
         List<Card> liste = new ArrayList<>();
         for (int i = 0; i <6 ; i++) {
@@ -45,9 +48,11 @@ public class Game {
         }
         Hand randomHand = new Hand(liste);
         return randomHand;
-    }
+    }*/
 
-    public Hand getHandPrincess() {
+    public Hand getHandPrincess() throws SQLException {
+        DeckDao dao = new DeckDao();
+        Hand handPrincess = new Hand(dao.getPrincessDeck().get(0).getColor(), dao.getPrincessDeck());
         return handPrincess;
     }
 
@@ -55,7 +60,9 @@ public class Game {
         this.handPrincess = handPrincess;
     }
 
-    public Hand getHandZerg() {
+    public Hand getHandZerg() throws SQLException {
+        DeckDao dao = new DeckDao();
+        Hand handZerg = new Hand(dao.getZergDeck().get(0).getColor(), dao.getZergDeck());
         return handZerg;
     }
 
@@ -70,4 +77,31 @@ public class Game {
     public void setGrid(Grid grid) {
         this.grid = grid;
     }
+
+
+    public boolean isFinished (){
+
+        if (this.grid.isFull()){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public String defineWinner(){
+        if (isFinished()){
+            if (this.grid.maxOfColors() == "equality"){
+                return "There is an equality ! You should restart a game.";
+            } else {
+                String result = "The winner is " + this.grid.maxOfColors();
+                return result;
+            }
+        } else {
+            return "The Game is not finished";
+        }
+
+
+    }
+
 }

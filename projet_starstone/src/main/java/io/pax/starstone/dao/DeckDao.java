@@ -128,7 +128,8 @@ public class DeckDao {
         DeckDao dao = new DeckDao();
         //dao.createDeck();
 
-        System.out.println(dao.getPrincessDeck());
+        //System.out.println(dao.getPrincessDeck());
+
     }
 
 }

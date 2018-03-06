@@ -1,16 +1,12 @@
 package io.pax.starstone.domain;
 
 
-public class Card {
+public class Card implements Comparable<Card>{
 
-    int up;
-    int right;
-    int down;
-    int left;
+    int up, right, down, left, order;
 
-    String name;
+    String name, color;
 
-    String color;
 
     public Card(){
     }
@@ -24,6 +20,18 @@ public class Card {
         this.left = left;
         this.name = "" + up + right + down + left;
         this.color = "";
+        this.order = 0;
+    }
+
+    public Card(int order, int up, int right, int down, int left, String color) {
+        super();
+        this.up = up;
+        this.right = right;
+        this.down = down;
+        this.left = left;
+        this.name = "" + up + right + down + left;
+        this.color = color;
+        this.order = order;
     }
 
     public int getUp() {
@@ -75,12 +83,29 @@ public class Card {
         this.color = color;
     }
 
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
     @Override
     public String toString() {
         return "Card " + this.name;
     }
 
 
-
+    @Override
+    public int compareTo(Card card) {
+        if (this.getOrder() > card.getOrder()){
+            return 1;
+        } else if (this.getOrder() == card.getOrder()){
+            return 0;
+        } else {
+            return -1;
+        }
+    }
 }
 
