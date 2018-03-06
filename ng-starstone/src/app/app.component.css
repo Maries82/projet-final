@@ -1,0 +1,17 @@
+header{
+  padding:25px 0px;/*Marge verticale*/
+  background-image: url("https://t4.ftcdn.net/jpg/00/87/57/79/240_F_87577986_RhxHb9EGMNVpsUfHZg22AkhmTxWStnZA.jpg");
+  text-align:center;/*texte centré*/
+  font-size: 150%;
+  font-family: "Bernard MT Condensed";
+
+}
+
+.centercolumn{
+  width:100%;/*Taille de la colonne centrée moins le padding*/
+  background-color:burlywood;/*Couleur de fond*/
+  margin: auto; /*centrer la colonne*/
+  padding:25px;/*margin interne*/
+}
+
+

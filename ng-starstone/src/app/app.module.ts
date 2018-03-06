@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { StarstoneViewComponent } from './starstone-view/starstone-view.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StarstoneViewComponent
   ],
   imports: [
     BrowserModule
