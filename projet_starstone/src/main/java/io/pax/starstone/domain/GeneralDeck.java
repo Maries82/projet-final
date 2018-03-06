@@ -7,6 +7,8 @@ public class GeneralDeck {
 
     List<Card> cards = new ArrayList<>();
 
+    final static List<Card> generalDeck = createCardsStatic();
+
     public GeneralDeck() {
         super();
         this.cards = createCards();
@@ -15,7 +17,6 @@ public class GeneralDeck {
     public List<Card> createCards (){
 
         List<Card> results = new ArrayList<>();
-        int count = 0;
 
         for (int up = 1; up < 10 ; up++){
             for (int right = 1; right < 10 ; right++){
@@ -24,22 +25,36 @@ public class GeneralDeck {
                         if (up + right + down + left == 20){
                             Card carte = new Card(up, right, down, left);
                             results.add(carte);
-                            count++;
                         }
-
                     }
-
                 }
             }
         }
 
-
-        //System.out.println(count);
-
-
         return results;
-
     }
+
+
+    public static List<Card> createCardsStatic (){
+
+        List<Card> deckOfTen = new ArrayList<>();
+
+        for (int up = 1; up < 10 ; up++){
+            for (int right = 1; right < 10 ; right++){
+                for (int down = 1; down < 10 ; down++){
+                    for (int left = 1; left < 10 ; left++){
+                        if (up + right + down + left == 20){
+                            Card carte = new Card(up, right, down, left);
+                            deckOfTen.add(carte);
+                        }
+                    }
+                }
+            }
+        }
+
+         return deckOfTen;
+    }
+
 
     @Override
     public String toString() {

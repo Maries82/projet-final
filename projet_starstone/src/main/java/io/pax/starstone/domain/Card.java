@@ -10,6 +10,12 @@ public class Card {
 
     String name;
 
+    String color;
+
+    public Card(){
+    }
+
+
     public Card(int up, int right, int down, int left) {
         super();
         this.up = up;
@@ -17,6 +23,7 @@ public class Card {
         this.down = down;
         this.left = left;
         this.name = "" + up + right + down + left;
+        this.color = "";
     }
 
     public int getUp() {
@@ -59,6 +66,15 @@ public class Card {
         this.name = name;
     }
 
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "Card " + this.name;
@@ -67,3 +83,4 @@ public class Card {
 
 
 }
+

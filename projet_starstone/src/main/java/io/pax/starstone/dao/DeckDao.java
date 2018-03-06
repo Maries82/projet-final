@@ -1,9 +1,11 @@
 package io.pax.starstone.dao;
 
 import io.pax.starstone.domain.Card;
+import io.pax.starstone.domain.Deck;
 import io.pax.starstone.domain.GeneralDeck;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +31,7 @@ public class DeckDao {
 
             statement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            GeneralDeck generalDeck = new GeneralDeck();
+           // GeneralDeck generalDeck = new GeneralDeck();
 
             statement.setInt(1, carte.getUp());
             statement.setInt(2, carte.getRight());
@@ -50,10 +52,83 @@ public class DeckDao {
         return id;
     }
 
+    public List<Card> getPrincessDeck () throws SQLException {
+
+        List<Card> result = new ArrayList<>();
+
+        Connection conn = this.connector.getConnection();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM princess_deck p JOIN global_deck g ON p.id_card = g.id_card");
+
+        while (rs.next()) {
+            int cardId = rs.getInt("p.id_card");
+            int up = rs.getInt("g.up_side");
+            int right = rs.getInt("g.right_side");
+            int down = rs.getInt("g.down_side");
+            int left = rs.getInt("g.left_side");
+            Card card = new Card(up, right, down, left);
+            card.setColor("princess");
+            result.add(card);
+        }
+
+        for (Card card : Deck.generate10RandomCards()){
+            card.setColor("princess");
+            result.add(card);
+        }
+
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+        return result;
+    }
+
+    public List<Card> getZergDeck () throws SQLException {
+
+        List<Card> result = new ArrayList<>();
+
+        Connection conn = this.connector.getConnection();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM zerg_deck z JOIN global_deck g ON z.id_card = g.id_card");
+
+        while (rs.next()) {
+            int cardId = rs.getInt("z.id_card");
+            int up = rs.getInt("g.up_side");
+            int right = rs.getInt("g.right_side");
+            int down = rs.getInt("g.down_side");
+            int left = rs.getInt("g.left_side");
+            Card card = new Card(up, right, down, left);
+            card.setColor("zerg");
+            result.add(card);
+        }
+
+        for (Card card : Deck.generate10RandomCards()){
+            card.setColor("zerg");
+            result.add(card);
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+        return result;
+    }
+
+
+
+
+
+
+
+
+
+
     public static void main(String[] args) throws SQLException {
         DeckDao dao = new DeckDao();
-        dao.createDeck();
+        //dao.createDeck();
+
+        System.out.println(dao.getPrincessDeck());
     }
 
 }
-
