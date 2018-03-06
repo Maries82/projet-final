@@ -2,13 +2,12 @@ package io.pax.starstone.webservice;
 
 import io.pax.starstone.dao.DeckDao;
 import io.pax.starstone.domain.Card;
+import io.pax.starstone.domain.Hand;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,16 +33,20 @@ public class DeckWs {
         return dao.getZergDeck();
     }
 
-/*    @POST
-    public Hand createHand() throws SQLException {
-        try {
+    @POST
+    public Hand createHand(List<Card> cards) {
 
-            int id = new DeckDao().createDeck();
-            return new GeneralDeck();
-        } catch (SQLException e) {
-            throw e;
+        List<Card> handList = new ArrayList<>();
+        String color = cards.get(0).getColor();
+
+        for (int index = 0; index < 6; index++){
+            handList.add(new Card(cards.get(index).getUp(), cards.get(index).getRight(),cards.get(index).getDown(), cards.get(index).getLeft()));
         }
-    }*/
+
+        Hand hand = new Hand(color, handList);
+        System.out.println(hand);
+        return hand;
+    }
 
 
 /*    @POST
