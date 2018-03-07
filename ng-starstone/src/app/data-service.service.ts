@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Card} from './model/card';
 import {Zerg} from "./model/zerg";
-import {forEach} from "@angular/router/src/utils/collection";
+
 import {Princess} from "./model/princess";
 
 
@@ -34,8 +34,23 @@ export class DataService {
   }
 
 
-  sendHands(zergHand: Card[], princessHand : Card[]){
+  sendHands(princess: Princess, zerg: Zerg){
+    let url = 'http://localhost:8080/starstone/api/general';
 
+    console.log("Princess : " + princess.princessHand[3].name + " - " + princess.princessHand[3].color + " - " + princess.princessHand[3].order);
+
+    let dto = [{
+
+      princessHand: princess.princessHand
+
+    }, {
+      zergHand: zerg.zergHand
+    }]
+    console.log('Sending topicDTO' + dto);
+
+    return this.http.post(url, dto)
+      .toPromise()
+      .then(data => console.log('Success :) ', data))
   }
 
   /*sendZergHand(zerg: Zerg) {

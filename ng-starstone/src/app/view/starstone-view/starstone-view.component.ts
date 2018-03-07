@@ -22,8 +22,18 @@ export class StarstoneViewComponent implements OnInit {
   filledHand : boolean = false;
 
   selectedCard : Card;
-  princess: Princess;
-  zerg: Zerg;
+  princess: Princess = {
+    id: 1,
+    name: "princess",
+    princessCards: [],
+    princessHand: []
+  };
+
+  zerg: Zerg = {
+    id: 2,
+    name: "zerg",
+    zergCards: [],
+    zergHand: []}
 
   constructor(public dataService: DataService) {
 
@@ -58,6 +68,7 @@ export class StarstoneViewComponent implements OnInit {
     //console.log(list);
 
     if (list.length == 8){
+      console.log("Ok for the Princess' hand !");
       return list;
     } else if (list.length < 8) {
       console.log("You need to have 8 cards in your hand, please, keep going.")
@@ -72,10 +83,12 @@ export class StarstoneViewComponent implements OnInit {
 
     //console.log(this.zergCards);
     const list = this.zergCards.filter(o => o.selected).map(o=>o.card);
+    //this.zerg.zergHand = list;
 
-    //console.log(list);
+
 
     if (list.length == 8){
+      console.log("Ok for the Zerg's hand !");
       return list;
     } else if (list.length < 8) {
       console.log("You need to have 8 cards in your hand, please, keep going.")
@@ -88,9 +101,16 @@ export class StarstoneViewComponent implements OnInit {
   startGame(){
     if (this.getPrincessHand() != [] && this.getZergHand() != []){
       console.log("Start Game !!!!");
-      console.log(this.getPrincessHand());
-      console.log(this.getZergHand());
-      return this.dataService.sendHands(this.getPrincessHand(),this.getZergHand());
+      /*console.log(this.getPrincessHand());
+      console.log(this.getZergHand());*/
+
+      this.zerg.zergHand = this.getZergHand();
+      this.princess.princessHand = this.getPrincessHand();
+
+
+
+      return this.dataService.sendHands(this.princess, this.zerg)
+        .catch(e => alert(e.message));
     }
   }
 
