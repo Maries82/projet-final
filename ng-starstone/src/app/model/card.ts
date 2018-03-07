@@ -10,8 +10,6 @@ export class Card {
   left: number;
   name: string;
   color: string;
-
-
 }
 
 

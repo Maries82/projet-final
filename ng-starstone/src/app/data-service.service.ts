@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Card} from "./model/card";
+import {HttpClient} from '@angular/common/http';
+import {Card} from './model/card';
 
 
 @Injectable()

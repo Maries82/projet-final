@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../data-service.service';
-import {Card} from '../model/card';
-import {Princess} from '../model/princess';
+import {DataService} from '../../data-service.service';
+import {Card} from '../../model/card';
+import {Princess} from '../../model/princess';
 
 @Component({
   selector: 'app-starstone-view',
