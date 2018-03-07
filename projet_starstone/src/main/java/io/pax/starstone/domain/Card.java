@@ -93,7 +93,7 @@ public class Card implements Comparable<Card>{
 
     @Override
     public String toString() {
-        return "Card " + this.name;
+        return "Card " + this.name+", "+this.color;
     }
 
 
@@ -106,6 +106,12 @@ public class Card implements Comparable<Card>{
         } else {
             return -1;
         }
+    }
+
+    public boolean hasDifferentColor(Card card){
+        if (this.getColor().equals(card.getColor()))
+            return false;
+        return true;
     }
 }
 

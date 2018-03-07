@@ -91,7 +91,6 @@ public class Game {
             return false;
         }
 
-
     }
 
     public String defineWinner() throws SQLException {
