@@ -39,7 +39,7 @@ public class Cell {
     }
 
     public boolean isEmpty(){
-        if (this.card.equals(null)){
+        if (null == this.getCard()){
             return true;
         }
         else return false;
@@ -74,5 +74,19 @@ public class Cell {
         if(this.getX() + i > 4 || this.getX() + i < 0 || this.getY() + j > 4 || this.getY() + j < 0)
             return true;
         return false;
+    }
+
+    public boolean cardHasSameColor(Cell cell){
+        if (this.getCard().getColor().equals(cell.getCard().getColor()))
+            return true;
+        return false;
+    }
+
+    public String toString(){
+        if (this.isEmpty()){
+            return "Cell [ X="+ this.getX()+", Y="+this.getY()+", nullCard ]";
+        }
+        return "Cell [ X="+ this.getX()+", Y="+this.getY()+", "+this.getCard()+" ]";
+
     }
 }

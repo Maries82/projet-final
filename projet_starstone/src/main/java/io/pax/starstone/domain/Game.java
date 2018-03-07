@@ -79,7 +79,7 @@ public class Game {
     }
 
 
-    public boolean isFinished (){
+    /*public boolean isFinished (){
 
         if (this.grid.isFull()){
             return true;
@@ -102,6 +102,6 @@ public class Game {
         }
 
 
-    }
+    }*/
 
 }
