@@ -1,17 +1,15 @@
-import {Princess} from "./princess";
-import {Zerg} from "./zerg";
+import {Princess} from './princess';
+import {Zerg} from './zerg';
 
 
-export class Card{
+export class Card {
 
-  up:number;
+  up: number;
   right: number;
   down: number;
   left: number;
-  name : string;
+  name: string;
   color: string;
-
-
 }
 
 

@@ -1,11 +1,10 @@
-import {Card} from "./card";
+import {Card} from './card';
 
-export class Zerg{
-
+export class Zerg {
 
   id: number;
-  name : string;
+  name: string;
 
-  cards:Card[] = [];
+  cards: Card[] = [];
 
 }

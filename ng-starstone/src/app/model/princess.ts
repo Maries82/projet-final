@@ -1,11 +1,11 @@
-import {Card} from "./card";
+import {Card} from './card';
 
-export class Princess{
+export class Princess {
 
 
   id: number;
-  name : string;
+  name: string;
 
-  cards:Card[] = [];
+  cards: Card[] = [];
 
 }
