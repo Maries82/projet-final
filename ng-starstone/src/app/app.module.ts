@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { StarstoneViewComponent } from './starstone-view/starstone-view.component';
 import {HttpClientModule} from "@angular/common/http";
 import {DataService} from "./data-service.service";
+import { GameViewComponent } from './game-view/game-view.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StarstoneViewComponent
+    StarstoneViewComponent,
+    GameViewComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
