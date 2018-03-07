@@ -1,6 +1,7 @@
 package io.pax.starstone.domain;
 
 import io.pax.starstone.dao.DeckDao;
+import io.pax.starstone.dao.WinnerDao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -80,22 +81,30 @@ public class Game {
     }
 
 
-    /*public boolean isFinished (){
-
-        if (this.grid.isFull()){
-            return true;
+    public boolean isFinished (){
+        if (this.grid != null){
+            if (this.grid.isFull()){
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
 
     }
 
-    public String defineWinner(){
+    public String defineWinner() throws SQLException {
+        WinnerDao dao = new WinnerDao();
+
         if (isFinished()){
             if (this.grid.maxOfColors() == "equality"){
-                return "There is an equality ! You should restart a game.";
+                String equality = "There is an equality ! You should restart a game.";
+                dao.defineWinner(equality);
+                return equality;
             } else {
                 String result = "The winner is " + this.grid.maxOfColors();
+                dao.defineWinner(result);
                 return result;
             }
         } else {
@@ -103,7 +112,7 @@ public class Game {
         }
 
 
-    }*/
+    }
 
     public void generateNewRandomGame(){
         this.handPrincess = generateRandomHand("princess");

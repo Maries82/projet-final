@@ -3,8 +3,8 @@ import {Card} from './card';
 export class Zerg {
 
   id: number;
-  name: string;
+  name: string = "zerg";
 
-  cards: Card[] = [];
+  zergCards: Card[] = [];
 
 }
