@@ -86,11 +86,42 @@ public class Grid {
         this.grid = grid;
     }
 
-    @Override
-    public String toString() {
+/*    @Override
+    public String toString() {}*/
 
+    public String maxOfColors(){
 
-        return super.toString();
+        int countPrincess = 0;
+
+        for (int y = 0; y < 4; y++){
+            for (int x = 0; x < 4; x++){
+                if (this.grid[x][y].card.getColor().equals("princess")){
+                    countPrincess++;
+                }
+            }
+        }
+
+        if (countPrincess > 8){
+            return "princess";
+        } else if (countPrincess == 8){
+            return "equality";
+        } else {
+            return "zerg";
+        }
+    }
+
+    public boolean isFull(){
+        for (int y = 0; y < 4; y++){
+            for (int x = 0; x < 4;){
+                if (!this.grid[x][y].isEmpty()){
+                    x++;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     public  Cell[][] initializeGrid(){
@@ -107,8 +138,6 @@ public class Grid {
         }
         return grid;
     }
-
-
 
 }
 

@@ -1,5 +1,6 @@
 package io.pax.starstone.webservice;
 
+import io.pax.starstone.business.HandBusiness;
 import io.pax.starstone.dao.DeckDao;
 import io.pax.starstone.domain.Card;
 import io.pax.starstone.domain.Hand;
@@ -52,9 +53,10 @@ public class DeckWs {
 
         Collections.sort(handList);
 
-        Hand hand = new Hand(color, handList);
+        Hand hand = new HandBusiness().createHand(color, handList);
+
         System.out.println(hand);
-        return hand;
+        return new Hand(color, handList);
     }
 
 

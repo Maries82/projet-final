@@ -1,5 +1,4 @@
-import {Princess} from './princess';
-import {Zerg} from './zerg';
+
 
 
 export class Card {
