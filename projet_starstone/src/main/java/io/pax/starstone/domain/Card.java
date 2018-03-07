@@ -76,11 +76,11 @@ public class Card implements Comparable<Card>{
 
 
     public String getColor() {
-        return color;
+        return this.color;
     }
 
     public void setColor(String color) {
-        this.color = color;
+        this.color = ""+color;
     }
 
     public int getOrder() {
@@ -112,6 +112,13 @@ public class Card implements Comparable<Card>{
         if (this.getColor().equals(card.getColor()))
             return false;
         return true;
+    }
+
+    public boolean isEmpty(){
+        if("".equals(this.color)){
+            return true;
+        }
+        else return false;
     }
 }
 

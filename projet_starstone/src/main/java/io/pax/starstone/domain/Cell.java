@@ -31,7 +31,7 @@ public class Cell {
     }
 
     public Card getCard() {
-        return card;
+        return this.card;
     }
 
     public void setCard(Card card) {
