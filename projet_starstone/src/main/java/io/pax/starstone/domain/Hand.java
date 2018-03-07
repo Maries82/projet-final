@@ -40,7 +40,7 @@ public class Hand {
 
     @Override
     public String toString() {
-        return "Hand{}";
+        return "Hand{" + this.color + this.cards + "}";
     }
 
 
