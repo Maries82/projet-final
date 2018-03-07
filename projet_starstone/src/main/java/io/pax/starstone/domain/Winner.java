@@ -1,10 +1,23 @@
 package io.pax.starstone.domain;
 
-public class Winner extends Game{
+public class Winner {
 
 String name;
+int id;
 
-    public Winner(String name) {
+    public Winner() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Winner(int id, String name) {
+        this.id= id;
         this.name = name;
     }
 
@@ -17,4 +30,11 @@ String name;
     }
 
 
+    @Override
+    public String toString() {
+        return "Winner{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

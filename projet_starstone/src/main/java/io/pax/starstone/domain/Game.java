@@ -6,6 +6,7 @@ import io.pax.starstone.dao.WinnerDao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Game {
 
@@ -97,7 +98,7 @@ public class Game {
         WinnerDao dao = new WinnerDao();
 
         if (isFinished()){
-            if (this.grid.maxOfColors() == "equality"){
+            if (Objects.equals(this.grid.maxOfColors(), "equality")){
                 String equality = "There is an equality ! You should restart a game.";
                 dao.defineWinner(equality);
                 return equality;
