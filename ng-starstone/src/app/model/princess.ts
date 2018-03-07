@@ -4,8 +4,8 @@ export class Princess {
 
 
   id: number;
-  name: string;
+  name: string = "princess";
 
-  cards: Card[] = [];
+  princessCards: Card[] = [];
 
 }

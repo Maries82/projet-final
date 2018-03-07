@@ -18,7 +18,7 @@ public class HandBusiness {
 
 
     public static void main(String[] args) {
-        //HandBusiness handy = new HandBusiness();
+
         List<Card> cards = new ArrayList<>();
         String color = "zerg";
         Card card = new Card(1,1,9,9);

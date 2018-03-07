@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DataService} from '../../data-service.service';
 import {Card} from '../../model/card';
 import {Princess} from '../../model/princess';
+import {Zerg} from "../../model/zerg";
 
 @Component({
   selector: 'app-starstone-view',
@@ -10,12 +11,33 @@ import {Princess} from '../../model/princess';
 })
 export class StarstoneViewComponent implements OnInit {
 
-  cards: Card[];
+  zergCards: Card[];
+  princessCards: Card[];
+  selectedZerg : boolean;
+  selectedPrincess : boolean;
+  princess: Princess;
+  zerg: Zerg;
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService) {
+
+  }
 
   ngOnInit() {
+  }
+
+  fetchZergDeck(){
+    this.selectedZerg = true;
+
     this.dataService.fetchZergDeck()
-      .then(cards => this.cards = cards);
+      .then(zCards => this.zergCards = zCards);
+    //.then(cards => console.log('Cards : ', cards));
+  }
+
+  fetchPrincessDeck(){
+    this.selectedPrincess = true;
+
+    this.dataService.fetchPrincessDeck()
+      .then(pCards => this.princessCards = pCards);
+    //.then(cards => console.log('Cards : ', cards));
   }
 }
