@@ -8,15 +8,171 @@
 }
 
 .princess{
-  text-decoration-color: crimson;
-  text-decoration-style: wavy;
+  color: hotpink;
+  font-family: "Comic Sans MS";
+  text-align: center;
 }
 
 .zerg{
-  text-decoration-color:darkcyan;
-  text-decoration-style: wavy;
+  color: darkslategrey;
+  font-family: "Comic Sans MS";
+  text-align: center;
 }
 
 .rules{
   text-align : justify;
+  font-family: "Comic Sans MS";
+}
+
+[type="checkbox"] {
+  width: 17px;
+  height: 17px; /* dim. de la case */
+
+}
+
+
+
+.gameContainer {
+  width: 440px;
+  height: 440px;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGvFc8O8Q783XKjgMbwFp_hH6Rg4n_YPM3O4Ivv3THCehAYbvJw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carre{
+  background: green;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  float: left;
+  position: relative;
+}
+
+.carre > * {
+  position: absolute;
+  color: blue;
+}
+
+.carre > .top {
+  top: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+.carre > .right {
+  right: 5px;
+  line-height: 100px;
+}
+
+.carre > .bottom {
+  bottom: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.carre > .left {
+  left: 5px;
+  line-height: 100px;
+}
+
+
+
+.cPrincess{
+  background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxnjJOFg_NrrhIJVtElITYI6M6jq5Bn5lzppmJTOe8dRbB_PjP);
+  width: 100px;
+  height: 100px;
+  margin: 4px;
+  float: left;
+  position: relative;
+
+}
+
+.cPrincess > * {
+  position: absolute;
+  color: fuchsia;
+  font-family: "Comic Sans MS";
+  font-size: 18px;
+  Font-Weight: Bold;
+ }
+
+.cPrincess > .check{
+  width: 100%;
+  left : 38px;
+  top : 1px;
+
+}
+
+.cPrincess > .top {
+  top: 3px;
+  width: 100%;
+  text-align: center;
+}
+
+.cPrincess > .right {
+  right: 3px;
+  line-height: 100px;
+}
+
+.cPrincess > .bottom {
+  bottom: 3px;
+  text-align: center;
+  width: 100%;
+}
+
+.cPrincess > .left {
+  left: 3px;
+  line-height: 100px;
+}
+
+
+.cZerg {
+  background-image:url(https://yt3.ggpht.com/-wGjx8AUxPhA/AAAAAAAAAAI/AAAAAAAAAAA/aohYUPfocYE/s100-c-k-no-mo-rj-c0xffffff/photo.jpg);
+  width: 100px;
+  height: 100px;
+  margin: 3px;
+  float: left;
+  position: relative;
+}
+
+.cZerg > * {
+  position: absolute;
+  color: white;
+  font-family: "Comic Sans MS";
+  font-size: 18px;
+}
+
+
+.cZerg > .check{
+   width: 100%;
+   left : 38px;
+   top : 1px;
+ }
+
+
+
+.cZerg > .top {
+  top: 3px;
+  width: 100%;
+  text-align: center;
+}
+
+.cZerg > .right {
+  right: 3px;
+  line-height: 100px;
+}
+
+.cZerg > .bottom {
+  bottom: 3px;
+  text-align: center;
+  width: 100%;
+}
+
+.cZerg> .left {
+  left: 3px;
+  line-height: 100px;
+}
+
+.party{
+
 }
