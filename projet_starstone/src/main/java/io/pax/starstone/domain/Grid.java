@@ -69,6 +69,7 @@ public class Grid {
                     if (currentCell.getCard().getLeft() > adjacentCell.getCard().getRight()) {
                         this.grid[x + i][x + j].getCard().setColor(currentCell.getCard().getColor());
                     }
+
                 }
             }
 
