@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { StarstoneViewComponent } from './starstone-view/starstone-view.component';
+import {HttpClientModule} from "@angular/common/http";
+import {DataService} from "./data-service.service";
 
 
 @NgModule({
@@ -12,9 +14,9 @@ import { StarstoneViewComponent } from './starstone-view/starstone-view.componen
     StarstoneViewComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, HttpClientModule,
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
