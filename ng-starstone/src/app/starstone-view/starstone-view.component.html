@@ -53,14 +53,14 @@
       <button class="party" (click)="launchGame()">Start Game</button>
     </p>
 
-    <p>
+<!--    <p>
       {{resultWinner}}
-    </p>
+    </p>-->
 
-    <ul>
+<!--    <ul>
       <li *ngFor="let card of resultList">{{card.name}}</li>
 
-    </ul>
+    </ul>-->
 
   </div>
 
@@ -97,5 +97,16 @@
     </section>
   </div>
 
-
 </div>
+
+  <div class="gameContainer">
+    <div class="carre" *ngFor="let card of resultList">
+      <div class="top">{{card.up}}</div>
+      <div class="right">{{card.right}}</div>
+      <div class="bottom">{{card.down}}</div>
+      <div class="left">{{card.left}}</div>
+    </div>
+
+  </div>
+
+
