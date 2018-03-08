@@ -7,7 +7,7 @@
          src="http://cache.cosmopolitan.fr/data/photo/w660_c17/4l/princesses-disney-small.jpg">
 
     <p>
-    <button (click)="fetchPrincessDeck()">see Princess' deck</button>
+    <button class="princessDeckButton" (click)="fetchPrincessDeck()">see Princess' deck</button>
     </p>
 
 
@@ -27,9 +27,9 @@
   </div>
 
   <div class="column">
-    <h1>Règles du jeu</h1>
+    <h1 class="rulesGame">Règles du jeu</h1>
 
-    <div class="rules games">
+    <div class="rules">
       Bienvenue sur Starstone. Les règles du jeu sont simples!
       <p>
         Il suffit de voler un maximum de cartes à l'adversaire à chaque partie. Compris? euh...?
@@ -56,7 +56,7 @@
          src="https://cdnb.artstation.com/p/assets/images/images/003/018/799/large/vuong-nguyen-zeggies.jpg?1468551727">
 
     <p>
-    <button (click)="fetchZergDeck()">see Zerg's deck</button>
+    <button class="zergDeckButton" (click)="fetchZergDeck()">see Zerg's deck</button>
     </p>
 
     <section class = "zerg" *ngIf="selectedZerg">
