@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StarstoneViewComponent } from './view/starstone-view/starstone-view.component';
 import {HttpClientModule} from "@angular/common/http";
 import {DataService} from "./data-service.service";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -15,7 +16,7 @@ import {DataService} from "./data-service.service";
     StarstoneViewComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule,
+    BrowserModule, HttpClientModule,FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

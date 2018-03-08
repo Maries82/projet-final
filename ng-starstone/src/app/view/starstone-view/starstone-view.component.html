@@ -5,22 +5,29 @@
     <h1 class=princess>Team Princess</h1>
     <img width="400" height="200" alt="Princess"
          src="http://cache.cosmopolitan.fr/data/photo/w660_c17/4l/princesses-disney-small.jpg">
-
     <p>
     <button class="princessDeckButton" (click)="fetchPrincessDeck()">see Princess' deck</button>
     </p>
 
-
     <section class = "princess" *ngIf="selectedPrincess">
 
-      <div  class="cPrincess"  *ngFor="let card of princessCards">
-        <div class="top">{{card.up}}</div>
-        <div class="right">{{card.right}}</div>
-        <div class="bottom">{{card.down}}</div>
-        <div class="left">{{card.left}}</div>
-        <input class="check" type="checkbox">
+      <div  class="cPrincess" *ngFor="let option of princessCards">
 
-      </div>
+        <div class="top">{{option.up}}</div>
+        <div class="right">{{option.right}}</div>
+        <div class="bottom">{{option.down}}</div>
+        <div class="left">{{option.left}}</div>
+          <input
+            class="check"
+            type="checkbox"
+            [checked] = false
+            name="checkPrincess"
+            [(ngModel)]="option.selected">
+            {{option.selected}}
+        </div>
+
+
+      <button (click)="getPrincessHand()">Validate</button>
 
     </section>
 
@@ -41,9 +48,8 @@
     </div>
 
     <br>
-
     <p>
-      <button class="party">Begin the Game !!!</button>
+    <button class="party" (click)="startGame()">Start Game</button>
     </p>
 
 
@@ -59,19 +65,23 @@
     <button class="zergDeckButton" (click)="fetchZergDeck()">see Zerg's deck</button>
     </p>
 
-    <section class = "zerg" *ngIf="selectedZerg">
+    <section *ngIf="selectedZerg">
+      <div  class="cZerg" *ngFor="let option of zergCards">
 
-        <div  class="cZerg"  *ngFor="let card of zergCards">
-           <div class="top">{{card.up}}</div>
-          <div class="right">{{card.right}}</div>
-          <div class="bottom">{{card.down}}</div>
-          <div class="left">{{card.left}}</div>
+        <div class="top">{{option.up}}</div>
+        <div class="right">{{option.right}}</div>
+        <div class="bottom">{{option.down}}</div>
+        <div class="left">{{option.left}}</div>
+        <input
+          class="check"
+          type="checkbox"
+          [checked] = false
+          name="checkZerg"
+          [(ngModel)]="option.selected">
+        {{option.selected}}
+      </div>
 
-          <input class="check" type="checkbox" >
-
-
-        </div>
-
+      <button (click)="getZergHand()">Validate</button>
     </section>
   </div>
 
