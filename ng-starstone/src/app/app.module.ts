@@ -3,18 +3,17 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { StarstoneViewComponent } from './view/starstone-view/starstone-view.component';
+import { StarstoneViewComponent } from './starstone-view/starstone-view.component';
 import {HttpClientModule} from "@angular/common/http";
 import {DataService} from "./data-service.service";
-import { GameViewComponent } from './view/game-view/game-view.component';
 import {FormsModule} from "@angular/forms";
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StarstoneViewComponent,
-    GameViewComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,FormsModule
