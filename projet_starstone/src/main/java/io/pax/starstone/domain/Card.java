@@ -23,6 +23,17 @@ public class Card implements Comparable<Card>{
         this.order = 0;
     }
 
+    public Card(int up, int right, int down, int left, String color) {
+        super();
+        this.up = up;
+        this.right = right;
+        this.down = down;
+        this.left = left;
+        this.name = "" + up + right + down + left;
+        this.color = color;
+        this.order = 0;
+    }
+
     public Card(int order, int up, int right, int down, int left, String color) {
         super();
         this.up = up;

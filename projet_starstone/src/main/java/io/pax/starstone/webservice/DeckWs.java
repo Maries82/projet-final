@@ -36,27 +36,50 @@ public class DeckWs {
     }
 
     @POST
-    public Hand createHand(List<Card> cards) {
+    public List<Hand> createHand(List<Card> princessHand, List<Card> zergHand) {
 
-        List<Card> handList = new ArrayList<>();
-        String color = cards.get(0).getColor();
+        List<Card> princessHandList = new ArrayList<>();
+        List<Card> zergHandList = new ArrayList<>();
+
+        List<Hand> hands = new ArrayList<>();
+
+        String colorZ = princessHand.get(0).getColor();
+        String colorP = zergHand.get(0).getColor();
 
         for (int index = 0; index < 8; index++){
-            handList.add(new Card(
-                    cards.get(index).getOrder(),
-                    cards.get(index).getUp(),
-                    cards.get(index).getRight(),
-                    cards.get(index).getDown(),
-                    cards.get(index).getLeft(),
-                    color));
+            princessHandList.add(new Card(
+                    princessHand.get(index).getOrder(),
+                    princessHand.get(index).getUp(),
+                    princessHand.get(index).getRight(),
+                    princessHand.get(index).getDown(),
+                    princessHand.get(index).getLeft(),
+                    colorP));
         }
 
-        Collections.sort(handList);
+        Collections.sort(princessHandList);
+        Hand pHand = new Hand(colorP, princessHandList);
 
-        Hand hand = new HandBusiness().createHand(color, handList);
+        for (int index = 0; index < 8; index++){
+            zergHandList.add(new Card(
+                    zergHand.get(index).getOrder(),
+                    zergHand.get(index).getUp(),
+                    zergHand.get(index).getRight(),
+                    zergHand.get(index).getDown(),
+                    zergHand.get(index).getLeft(),
+                    colorZ));
+        }
 
-        System.out.println(hand);
-        return new Hand(color, handList);
+        Collections.sort(zergHandList);
+        Hand zHand = new Hand(colorZ, zergHandList);
+
+        hands.add(pHand);
+        hands.add(zHand);
+
+        List<Hand> handList = new HandBusiness().getTwoHands(pHand,zHand);
+
+        System.out.println(hands);
+        System.out.println(handList);
+        return hands;
     }
 
 
