@@ -61,7 +61,6 @@ export class StarstoneViewComponent implements OnInit {
 
   getPrincessHand(): Card[]{
 
-
     //console.log(this.princessCards);
     const list = this.princessCards.filter(o => o.selected).map(o=>o.card);
 
