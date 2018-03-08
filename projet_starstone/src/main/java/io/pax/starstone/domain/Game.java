@@ -128,25 +128,12 @@ public class Game {
 
     public void playGame(){
         List<Card> cardsToBePlayed = new ArrayList<>();
-        for (int i = 0; i < handZerg.getCards().size() ; i++) {
-            Card cardZ = this.handZerg.getCards().get(i);
-            Card cardP = this.handPrincess.getCards().get(i);
-            int idCard = 2*i;
-            cardsToBePlayed.add(cardZ);
-            cardsToBePlayed.add(cardP);
-
-        }
-        /*this.grid.insertCard(0,3,cardsToBePlayed.get(0));
-        System.out.println(this.grid);
-        this.grid.insertCard(1,3,cardsToBePlayed.get(1));
-        System.out.println(this.grid);
-        this.grid.insertCard(2,3,cardsToBePlayed.get(2));
-        System.out.println(this.grid);*/
+        generateCardsToBePlayed(cardsToBePlayed);
 
         int count = 0;
         for (int j = 3; j > -1; j--) {
             for (int i = 0; i < 4; i++){
-                System.out.println(cardsToBePlayed.get(count));
+                //System.out.println(cardsToBePlayed.get(count));
                 this.grid.insertCard(i,j,cardsToBePlayed.get(count));
                 System.out.println(this.grid.toString());
                 count++;
@@ -156,7 +143,60 @@ public class Game {
 
     }
 
+    public void playGameWithRandomCardInsertion(){
+        List<Card> cardsToBePlayed = new ArrayList<>();
+        generateCardsToBePlayed(cardsToBePlayed);
+
+        int count = 0;
+        while (!this.grid.isFull()){
+            Cell cell = this.grid.insertCardToRandomEmptyCell();
+            this.grid.insertCard(cell.getX(),cell.getY(), cardsToBePlayed.get(count));
+            System.out.println(this.grid.toString());
+            count++;
+        }
 
 
 
+    }
+
+    private void generateCardsToBePlayed(List<Card> cardsToBePlayed) {
+        for (int i = 0; i < handZerg.getCards().size() ; i++) {
+
+            Card cardZ = this.handZerg.getCards().get(i);
+            Card cardP = this.handPrincess.getCards().get(i);
+            int idCard = 2*i;
+
+            if (i<4 || (i> 7 && i<12)){
+                cardsToBePlayed.add(cardZ);
+                cardsToBePlayed.add(cardP);
+            }
+            else {
+                cardsToBePlayed.add(cardP);
+                cardsToBePlayed.add(cardZ);
+            }
+
+        }
+    }
+
+    public static void main(String[] args) {
+        Game game = new Game();
+        int scoreZerg = 0;
+        int scorePrincess = 0;
+
+
+
+        for (int i = 0; i <100 ; i++) {
+            game.generateNewRandomGame();
+            game.playGameWithRandomCardInsertion();
+
+            String winner = game.grid.declareWinner();
+            if(winner.equals("princess"))
+                scorePrincess++;
+            if(winner.equals("zerg"))
+                scoreZerg++;
+
+        }
+
+        System.out.println("scoreZerg = "+scoreZerg+"\n"+"scorePrincess = "+scorePrincess);
+    }
 }
