@@ -64,12 +64,32 @@ public class WinnerDao {
 
     }
 
+    public static void insertCard() {
+
+        Game game = new Game();
+        game.generateNewRandomGame();
+        game.playGame();
+
+
+        System.out.println("////////////////////////////////////////////////// \n /////////////////////////////////////////////////////");
+        System.out.println(game.getGrid().toString());
+
+        try {
+            System.out.println(game.defineWinner());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
     public static void main(String[] args) throws SQLException {
         Game game = new Game();
 //        String result = game.defineWinner();
         WinnerDao dao = new WinnerDao();
 //        int id = dao.defineWinner(result);
+        dao.insertCard();
 //        System.out.println(id);
 //        System.out.println(dao.defineWinner(result));
         System.out.println(dao.getWinners());
