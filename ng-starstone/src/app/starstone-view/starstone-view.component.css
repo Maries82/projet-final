@@ -197,6 +197,9 @@
   horiz-align:center;
 }
 
+section.zergDeck{
+
+}
 .zergDeckButton{
   border-radius: 8px;
   font-size: 16px;
@@ -207,6 +210,12 @@
   height : 50px;
   horiz-align:center;
 }
+
+
+section.princessDeck{
+
+}
+
 
 .princessDeckButton{
   border-radius: 8px;
