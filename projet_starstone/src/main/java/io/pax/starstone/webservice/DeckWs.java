@@ -36,15 +36,15 @@ public class DeckWs {
     }
 
     @POST
-    public List<Hand> createHands(List<Card> princessHand, List<Card> zergHand) {
+    @Path("one")
+    public Hand createOneHand(List<Card> princessHand) {
 
         List<Card> princessHandList = new ArrayList<>();
-        List<Card> zergHandList = new ArrayList<>();
 
-        List<Hand> hands = new ArrayList<>();
 
-        String colorZ = princessHand.get(0).getColor();
-        String colorP = zergHand.get(0).getColor();
+
+        String colorP = princessHand.get(0).getColor();
+
 
         for (int index = 0; index < 8; index++){
             princessHandList.add(new Card(
@@ -54,12 +54,41 @@ public class DeckWs {
                     princessHand.get(index).getDown(),
                     princessHand.get(index).getLeft(),
                     colorP));
+
         }
 
         Collections.sort(princessHandList);
         Hand pHand = new Hand(colorP, princessHandList);
 
+        System.out.println(pHand);
+        return pHand;
+    }
+
+
+    @POST
+    @Path("two")
+    public List<Hand> createHands(List<List<Card>> list) {
+
+        List<Card> princessHandList = new ArrayList<>();
+        List<Card> zergHandList = new ArrayList<>();
+
+        List<Hand> hands = new ArrayList<>();
+
+        /*princessHand, List<Card> zergHand*/
+        List<Card> princessHand = list.get(0);
+        List<Card> zergHand = list.get(1);
+
+        String colorZ = zergHand.get(0).getColor();
+        String colorP = princessHand.get(0).getColor();
+
         for (int index = 0; index < 8; index++){
+            princessHandList.add(new Card(
+                    princessHand.get(index).getOrder(),
+                    princessHand.get(index).getUp(),
+                    princessHand.get(index).getRight(),
+                    princessHand.get(index).getDown(),
+                    princessHand.get(index).getLeft(),
+                    colorP));
             zergHandList.add(new Card(
                     zergHand.get(index).getOrder(),
                     zergHand.get(index).getUp(),
@@ -69,6 +98,9 @@ public class DeckWs {
                     colorZ));
         }
 
+        Collections.sort(princessHandList);
+        Hand pHand = new Hand(colorP, princessHandList);
+
         Collections.sort(zergHandList);
         Hand zHand = new Hand(colorZ, zergHandList);
 
@@ -76,12 +108,12 @@ public class DeckWs {
         hands.add(zHand);
 
 
+        HandBusiness handy = new HandBusiness();
+        handy.getTwoHands(pHand,zHand);
 
-        List<Object> handList = new HandBusiness().getTwoHands(pHand,zHand);
 
-
-        System.out.println(hands);
-        System.out.println(handList);
+        System.out.println("Resultat du WS : " + hands);
+        //System.out.println(handList);
         return hands;
     }
 

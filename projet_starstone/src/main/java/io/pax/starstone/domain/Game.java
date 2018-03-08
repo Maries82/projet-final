@@ -189,7 +189,12 @@ public class Game {
             game.generateNewRandomGame();
             game.playGameWithRandomCardInsertion();
 
-            String winner = game.grid.declareWinner();
+            String winner = null;
+            try {
+                winner = game.defineWinner();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             if(winner.equals("princess"))
                 scorePrincess++;
             if(winner.equals("zerg"))

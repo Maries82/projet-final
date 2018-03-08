@@ -21,7 +21,7 @@ public class GameWs {
     @Path("list")
     public List<Card> getResultList() throws SQLException {
 
-        return HandBusiness.RESULT;
+        return HandBusiness.RESULTLIST;
     }
 
     @GET

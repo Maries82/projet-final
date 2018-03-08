@@ -1,5 +1,8 @@
 package io.pax.starstone.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Grid {
 
     public final static int NBR_CASES_COTE = 4;

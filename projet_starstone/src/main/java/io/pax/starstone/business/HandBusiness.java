@@ -12,7 +12,7 @@ public class HandBusiness {
 
 
     public static String WINNER = "";
-    public static List<Card> RESULT = new ArrayList<>();
+    public static List<Card> RESULTLIST = new ArrayList<>();
 
     public static Hand createHand(String color, List<Card> cards){
 
@@ -21,62 +21,29 @@ public class HandBusiness {
         return hand;
     }
 
-    public static List<Object> getTwoHands(Hand pHand, Hand zHand){
-        //List<Hand> hands = new ArrayList<>();
-
-        List<Card> result = new ArrayList<>();
-        String winner = "";
-
-/*        hands.add(pHand);
-        hands.add(zHand);*/
+    public static void getTwoHands(Hand pHand, Hand zHand){
 
 
         Game game = new Game(pHand, zHand);
         launchGame(game);
 
-/*        game.playGame();
-        if (game.isFinished()){
-            try {
-                result = game.getGrid().giveResultList();
-                winner = game.defineWinner();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }*/
-
-        //Map<String, List<Card>> mapResult = new HashMap<>();
-        List<Object> resultList = new ArrayList<>();
-
-        resultList.add(result);
-        resultList.add(winner);
-
-
-        return resultList;
     }
 
     public static void launchGame(Game game){
 
-        List<Card> result = new ArrayList<>();
-        String winner = "";
+
 
         game.playGame();
         if (game.isFinished()){
             try {
-                RESULT = game.getGrid().giveResultList();
+                RESULTLIST = game.getGrid().giveResultList();
                 WINNER = game.defineWinner();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
 
-        //Map<String, List<Card>> mapResult = new HashMap<>();
-/*        List<Object> resultList = new ArrayList<>();
 
-        resultList.add(result);
-        resultList.add(winner);*/
-
-
-        //return resultList;
     }
 
 
@@ -109,7 +76,7 @@ public class HandBusiness {
         System.out.println(zCards.size());
 
         //System.out.println(HandBusiness.createHand(color,cards));
-        System.out.println(HandBusiness.getTwoHands(pHand,zHand));
+        //System.out.println(HandBusiness.getTwoHands(pHand,zHand));
 
     }
 

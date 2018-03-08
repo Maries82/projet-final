@@ -1,3 +1,4 @@
+/*
 package io.pax.starstone.domain;
 
 import org.junit.Test;
@@ -21,6 +22,6 @@ public class GridTest {
     }
 
     public static void main(String[] args) {
-        insertCard();
+
     }
-}
+}*/

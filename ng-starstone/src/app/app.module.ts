@@ -9,11 +9,10 @@ import {DataService} from "./data-service.service";
 import {FormsModule} from "@angular/forms";
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    StarstoneViewComponent,
+    StarstoneViewComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,FormsModule

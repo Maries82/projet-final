@@ -6,10 +6,17 @@ import {Zerg} from "./model/zerg";
 import {Princess} from "./model/princess";
 
 
+
+
 @Injectable()
 export class DataService {
 
-  constructor(public http: HttpClient) { }
+
+
+
+  constructor(public http: HttpClient) {
+
+  }
 
 
   fetchPrincessDeck(): Promise<Card[]> {
@@ -34,18 +41,58 @@ export class DataService {
   }
 
 
-  sendHands(princess: Princess, zerg: Zerg){
-    let url = 'http://localhost:8080/starstone/api/general';
+  sendHands(princessHand : Card[], zergHand : Card[]){
 
-    console.log("Princess : " + princess.princessHand[3].name + " - " + princess.princessHand[3].color + " - " + princess.princessHand[3].order);
+    let url = 'http://localhost:8080/starstone/api/general/two';
+    let handOfPrincess : Card[] = [];
+    let handOfZerg : Card[] = [];
 
-    let dto = [{
-      princessHand: princess.princessHand
-    }, {
-      zergHand: zerg.zergHand
-    }]
 
-    console.log('Sending topicDTO' + dto);
+    //console.log("Princess : " + princess.princessHand[3].name + " - " + princess.princessHand[3].color + " - " + princess.princessHand[3].order);
+
+
+/*    for (let i = 0; i < 8; i++){
+      let card : Card = {
+
+      }
+    }*/
+
+
+for (let i = 0; i < 8; i++) {
+  let princessCard : Card = {
+    name: princessHand[i].name,
+    order: princessHand[i].order,
+    up: princessHand[i].up,
+    right: princessHand[i].right,
+    down: princessHand[i].down,
+    left: princessHand[i].left,
+    color: princessHand[i].color
+  }
+
+  handOfPrincess.push(princessCard);
+
+  let zergCard : Card = {
+    name: zergHand[i].name,
+    order: zergHand[i].order,
+    up: zergHand[i].up,
+    right: zergHand[i].right,
+    down: zergHand[i].down,
+    left: zergHand[i].left,
+    color: zergHand[i].color
+  }
+  handOfZerg.push(zergCard);
+}
+
+console.log(handOfZerg[0]);
+console.log(handOfPrincess);
+
+
+    let dto = [handOfPrincess, handOfZerg];
+
+
+
+
+    console.log('Sending DTO : ' + dto);
 
 
 

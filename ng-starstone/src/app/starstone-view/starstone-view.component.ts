@@ -21,6 +21,9 @@ export class StarstoneViewComponent implements OnInit {
 
   filledHand : boolean = false;
 
+  resultWinner: string;
+  resultList: Card[] = [];
+
   selectedCard : Card;
   princess: Princess = {
     id: 1,
@@ -57,3 +60,81 @@ export class StarstoneViewComponent implements OnInit {
       .then(pCards => this.princessCards = pCards.map(c=>new CardOption(c)))
 
   }
+
+
+  getPrincessHand(): Card[]{
+
+
+    //console.log(this.princessCards);
+    const list = this.princessCards.filter(o => o.selected).map(o=>o.card);
+
+    //console.log(list);
+
+    if (list.length == 8){
+      console.log("Ok for the Princess' hand !");
+      return list;
+    } else if (list.length < 8) {
+      console.log("You need to have 8 cards in your hand, please, keep going.")
+    } else {
+      console.log("You can't have more than 8 cards in your hand. Please drop the surplus");
+    }
+
+  }
+
+  getZergHand(): Card[]{
+
+
+    //console.log(this.zergCards);
+    const list = this.zergCards.filter(o => o.selected).map(o=>o.card);
+    //this.zerg.zergHand = list;
+
+    //console.log(list);
+
+    if (list.length == 8){
+      console.log("Ok for the Zerg's hand !");
+      return list;
+    } else if (list.length < 8) {
+      console.log("You need to have 8 cards in your hand, please, keep going.")
+    } else {
+      console.log("You can't have more than 8 cards in your hand. Please drop the surplus");
+    }
+
+  }
+
+  launchGame() {
+    if (this.getPrincessHand() != [] && this.getZergHand() != []) {
+      console.log("Start Game !!!!");
+
+
+      this.startGame()
+        .then();
+      this.getResultWinner()
+        .then(resultWinner => this.resultWinner = resultWinner);
+      this.getResultList()
+        .then(resultList => this.resultList = resultList);
+
+    }
+  }
+
+  startGame() {
+/*        this.zerg.zergHand = this.getZergHand();
+        this.princess.princessHand = this.getPrincessHand();
+        console.log(this.princess.princessHand);*/
+
+        return this.dataService.sendHands(this.getPrincessHand(), this.getZergHand())
+          .catch(e => alert(e.message));
+  }
+
+
+  getResultWinner(){
+    return this.dataService.getResultWinner();
+
+  }
+
+  getResultList(){
+    return this.dataService.getResultList();
+  }
+
+  }
+
+
