@@ -27,10 +27,11 @@ public class Game {
     // génère au hasard une main de 6 cartes de la couleur du joueur donné
     public static Hand generateRandomHand(String color){
         List<Card> liste = new ArrayList<>();
-        for (int i = 0; i <6 ; i++) {
+        for (int i = 0; i <8 ; i++) {
             Double d = Math.random()*489;
             int r = d.intValue();
             Card card = GeneralDeck.createCardsStatic().get(r);
+            card.setOrder(i);
             card.setColor(color);
             liste.add(card);
         }
@@ -113,4 +114,39 @@ public class Game {
 
     }
 
+    public void generateNewRandomGame(){
+        this.handPrincess = generateRandomHand("princess");
+        this.handZerg = generateRandomHand("zerg");
+        this.grid = new Grid();
+    }
+
+    public void playGame(){
+        List<Card> cardsToBePlayed = new ArrayList<>();
+        for (int i = 0; i < handZerg.getCards().size() ; i++) {
+            Card cardZ = this.handZerg.getCards().get(i);
+            Card cardP = this.handPrincess.getCards().get(i);
+            int idCard = 2*i;
+            cardsToBePlayed.add(cardZ);
+            cardsToBePlayed.add(cardP);
+
+        }
+        /*this.grid.insertCard(0,3,cardsToBePlayed.get(0));
+        System.out.println(this.grid);
+        this.grid.insertCard(1,3,cardsToBePlayed.get(1));
+        System.out.println(this.grid);
+        this.grid.insertCard(2,3,cardsToBePlayed.get(2));
+        System.out.println(this.grid);*/
+
+        int count = 0;
+        for (int j = 3; j > -1; j--) {
+            for (int i = 0; i < 4; i++){
+                System.out.println(cardsToBePlayed.get(count));
+                this.grid.insertCard(i,j,cardsToBePlayed.get(count));
+                System.out.println(this.grid.toString());
+                count++;
+            }
+
+        }
+
+    }
 }

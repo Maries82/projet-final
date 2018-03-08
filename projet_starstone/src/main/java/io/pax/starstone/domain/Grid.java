@@ -15,6 +15,7 @@ public class Grid {
 
         // placement de la carte dans la grille
         this.grid[x][y].setCard(card);
+        System.out.println("Carte inserrée dans la case : "+this.grid[x][y]);
         Cell currentCell = this.grid[x][y];
 
         // recherche des cases adjacentes à la case séléctionnée
@@ -24,52 +25,92 @@ public class Grid {
 
 
                 // gestion des cases hors tableau
-                if (x + i >= NBR_CASES_COTE || x + i < 0 || y + j >= NBR_CASES_COTE || y + j < 0)
+                if (x + i >= NBR_CASES_COTE || x + i < 0 || y + j >= NBR_CASES_COTE || y + j < 0){
+                    System.out.println("out of grid");
                     continue;
+                }
+
 
                 Cell adjacentCell = this.grid[x + i][y + j];
 
                 // gestion des cases diagonales et identiques à currentCell
-                if ((i != 0 && j != 0) || (i == 0 && j == 0))
+                if ((i != 0 && j != 0) || (i == 0 && j == 0)){
+                    System.out.println("diagonal");
                     continue;
+                }
+
 
                 // je vérifie que la case adjacente possède une carte
-                if (adjacentCell.isEmpty())
+                if (this.grid[x + i][y + j].isEmpty()){
+                    System.out.println("empty");
                     continue;
+                }
+
 
                 //Je vérifie que la carte de la cellule adjacente soit de couleur différente
-                if (currentCell.cardHasSameColor(adjacentCell))
+                if (this.grid[x][y].cardHasSameColor(this.grid[x + i][y + j])){
+                    System.out.println("sameColor");
                     continue;
+                }
+
 
 
                 // Je regarde la position de la case adjacente par rapport à ma case
-                int pos = currentCell.returnAdjacentCellPosition(adjacentCell);
+                /*int pos = this.grid[x][y].returnAdjacentCellPosition(this.grid[x + i][y + j]);
+                System.out.println("pos ="+pos);*/
 
                 // Si la adjacente case est au dessus
-                if (pos == 0) {
-                    if (currentCell.getCard().getUp() > adjacentCell.getCard().getDown()) {
-                        this.grid[x + i][x + j].getCard().setColor(currentCell.getCard().getColor());
-
+                if (y+j > y) {
+                    if (this.grid[x][y].getCard().getUp() > this.grid[x + i][y + j].getCard().getDown()) {
+                        System.out.println("change carte au dessus");
+                        System.out.println("Case de dessus à changer : "+this.grid[x + i][y + j].toString());
+                        this.grid[x + i][x + j].getCard().setColor(this.grid[x][y].getCard().getColor());
+                        System.out.println("Case du dessus dechangée : "+this.grid[x + i][x + j].getCard().getColor());
                     }
+
                 }
                 // Si la case adjacente est à droite
-                if (pos == 1) {
-                    if (currentCell.getCard().getRight() > adjacentCell.getCard().getLeft()) {
-                        this.grid[x + i][x + j].getCard().setColor(currentCell.getCard().getColor());
-                    }
-                }
-                // Si la case adjacente est en dessous
-                if (pos == 2) {
-                    if (currentCell.getCard().getDown() > adjacentCell.getCard().getUp()) {
-                        this.grid[x + i][x + j].getCard().setColor(currentCell.getCard().getColor());
-                    }
-                }
-                // Si la case adjacente est à gauche
-                if (pos == 3) {
-                    if (currentCell.getCard().getLeft() > adjacentCell.getCard().getRight()) {
-                        this.grid[x + i][x + j].getCard().setColor(currentCell.getCard().getColor());
+                if (x+i > x) {
+                    if (this.grid[x][y].getCard().getRight() > this.grid[x + i][y + j].getCard().getLeft()) {
+                        this.grid[x + i][x + j].getCard().setColor(this.grid[x][y].getCard().getColor());
                     }
 
+                }
+                // Si la case adjacente est en dessous
+                if (y+j < y) {
+                    if (this.grid[x][y].getCard().getDown() > this.grid[x + i][y + j].getCard().getUp()) {
+                        this.grid[x + i][x + j].getCard().setColor(this.grid[x][y].getCard().getColor());
+                    }
+
+                }
+                // Si la case adjacente est à gauche
+                if (x+i < x) {
+                    if (this.grid[x][y].getCard().getLeft() > this.grid[x + i][y + j].getCard().getRight()) {
+                        System.out.println("change carte a gauche");
+
+                        String colorCurrent = this.grid[x][y]
+                                .getCard()
+                                .getColor();
+
+                        System.out.println("Case courante"+this.grid[x][y]);
+
+                        if (this.grid[x+i][y+j].isEmpty()){
+
+                            System.out.println("case à changer "+this.grid[x+i][y+j].toString()+" vide");
+                        }
+                        else if(this.grid[x+i][y+j].getCard().isEmpty()){
+                            System.out.println("couleur adjacente vide");
+                        }
+                        String colorAdjacent = this.grid[x + i][y + j].getCard().getColor();
+
+                        System.out.println("Case à changer: "+this.grid[x + i][y + j].toString());
+
+                        this.grid[x + i][y + j]
+                                .card
+                                .setColor(colorCurrent);
+
+                        System.out.println("Case changée : "+this.grid[x + i][y + j].toString());
+                    }
                 }
             }
 
@@ -87,8 +128,22 @@ public class Grid {
         this.grid = grid;
     }
 
-/*    @Override
-    public String toString() {}*/
+    @Override
+    public String toString() {
+        String gridString = "Grid { \n";
+        for (int j = 3; j > -1; j--) {
+            for (int i = 0; i < 4; i++) {
+
+                gridString += ""+this.grid[i][j].toString()+"\n";
+            }
+
+        }
+        gridString += " }";
+        return gridString;
+    }
+
+
+
 
     public String maxOfColors(){
 
@@ -124,7 +179,6 @@ public class Grid {
 
         return true;
     }
-
     public  Cell[][] initializeGrid(){
         Cell[][] grid = new Cell[NBR_CASES_COTE][NBR_CASES_COTE];
         System.out.println(grid[0][0]);
@@ -139,6 +193,8 @@ public class Grid {
         }
         return grid;
     }
+
+
 
 }
 
