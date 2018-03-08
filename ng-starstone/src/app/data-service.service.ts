@@ -4,6 +4,7 @@ import {Card} from './model/card';
 import {Zerg} from "./model/zerg";
 
 import {Princess} from "./model/princess";
+import {Winner} from './model/winner';
 
 
 @Injectable()
@@ -29,6 +30,17 @@ export class DataService {
       .then(data => {
         console.log(data);
         return data as Card[];
+      });
+
+  }
+
+  fetchWinner(): Promise<Winner[]>{
+    return this.http
+      .get('http://localhost:8080/starstone/api/game/winner')
+      .toPromise()
+      .then(data => {
+        console.log(data);
+        return data as Winner[];
       });
 
   }

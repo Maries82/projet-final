@@ -18,6 +18,7 @@ export class StarstoneViewComponent implements OnInit {
   princessHand: CardOption[] = [];
   selectedZerg : boolean;
   selectedPrincess : boolean;
+  selectedGame: boolean;
 
   filledHand : boolean = false;
 
@@ -55,6 +56,14 @@ export class StarstoneViewComponent implements OnInit {
 
     this.dataService.fetchPrincessDeck()
       .then(pCards => this.princessCards = pCards.map(c=>new CardOption(c)))
+
+  }
+
+
+  fetchWinner(){
+    this.selectedGame = true;
+
+    this.dataService.fetchWinner()
 
   }
 
@@ -105,6 +114,8 @@ export class StarstoneViewComponent implements OnInit {
 
       this.zerg.zergHand = this.getZergHand();
       this.princess.princessHand = this.getPrincessHand();
+
+
 
 
 
