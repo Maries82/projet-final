@@ -36,7 +36,7 @@ public class DeckWs {
     }
 
     @POST
-    public List<Hand> createHand(List<Card> princessHand, List<Card> zergHand) {
+    public List<Hand> createHands(List<Card> princessHand, List<Card> zergHand) {
 
         List<Card> princessHandList = new ArrayList<>();
         List<Card> zergHandList = new ArrayList<>();
@@ -75,7 +75,10 @@ public class DeckWs {
         hands.add(pHand);
         hands.add(zHand);
 
-        List<Hand> handList = new HandBusiness().getTwoHands(pHand,zHand);
+
+
+        List<Object> handList = new HandBusiness().getTwoHands(pHand,zHand);
+
 
         System.out.println(hands);
         System.out.println(handList);

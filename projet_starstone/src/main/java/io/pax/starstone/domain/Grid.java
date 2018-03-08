@@ -1,5 +1,8 @@
 package io.pax.starstone.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Grid {
 
     public final static int NBR_CASES_COTE = 4;
@@ -194,6 +197,18 @@ public class Grid {
         return grid;
     }
 
+    public List<Card> giveResultList() {
+        List<Card> listCards = new ArrayList<>();
+        for (int j = 3; j > -1; j--) {
+            for (int i = 0; i < 4; i++) {
+                if (!this.grid[i][j].isEmpty()) {
+                    listCards.add(this.grid[i][j].getCard());
+                }
+            }
+        }
+
+        return listCards;
+    }
 
 
 }

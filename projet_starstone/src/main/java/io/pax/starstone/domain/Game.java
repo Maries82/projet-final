@@ -23,6 +23,12 @@ public class Game {
         this.grid = grid;
     }
 
+    public Game(Hand handPrincess, Hand handZerg) {
+        this.handPrincess = handPrincess;
+        this.handZerg = handZerg;
+        this.grid = new Grid();
+    }
+
 
     // génère au hasard une main de 6 cartes de la couleur du joueur donné
     public static Hand generateRandomHand(String color){
@@ -149,4 +155,8 @@ public class Game {
         }
 
     }
+
+
+
+
 }

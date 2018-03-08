@@ -98,37 +98,36 @@ export class StarstoneViewComponent implements OnInit {
 
   }
 
-  startGame(){
-    if (this.getPrincessHand() != [] && this.getZergHand() != []){
+  launchGame() {
+    if (this.getPrincessHand() != [] && this.getZergHand() != []) {
       console.log("Start Game !!!!");
-      /*console.log(this.getPrincessHand());
-      console.log(this.getZergHand());*/
 
-      this.zerg.zergHand = this.getZergHand();
-      this.princess.princessHand = this.getPrincessHand();
+      this.startGame()
+      this.getResultWinner();
+      this.getResultList();
 
-
-
-      return this.dataService.sendHands(this.princess, this.zerg)
-        .catch(e => alert(e.message));
     }
   }
 
-/*  sendZergHand() {
-    if (this.princessHand.length == 8){
-      this.filledHand = true;
+  startGame() {
+        this.zerg.zergHand = this.getZergHand();
+        this.princess.princessHand = this.getPrincessHand();
 
 
-    return this.dataService.sendZergHand(this.zerg)
-      .then(() => this.selectedUser.topics.push(Object.assign({}, this.createdTopic)))
-      .catch(e => alert(e.message));
+        return this.dataService.sendHands(this.princess, this.zerg)
+          .catch(e => alert(e.message));
+  }
 
-    }
-  }*/
-}
-/*
-createTopic() {
-  return this.dataService.createTopic(this.createdTopic)
-    .then(() => this.selectedUser.topics.push(Object.assign({}, this.createdTopic)))
-    .catch(e => alert(e.message));
-}*/
+
+  getResultWinner(){
+    return this.dataService.getResultWinner();
+
+  }
+
+  getResultList(){
+    return this.dataService.getResultList();
+  }
+
+  }
+
+

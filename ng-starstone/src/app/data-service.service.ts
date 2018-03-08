@@ -40,18 +40,41 @@ export class DataService {
     console.log("Princess : " + princess.princessHand[3].name + " - " + princess.princessHand[3].color + " - " + princess.princessHand[3].order);
 
     let dto = [{
-
       princessHand: princess.princessHand
-
     }, {
       zergHand: zerg.zergHand
     }]
+
     console.log('Sending topicDTO' + dto);
+
+
 
     return this.http.post(url, dto)
       .toPromise()
       .then(data => console.log('Success :) ', data))
   }
+
+
+  getResultWinner() : Promise<string>{
+    return this.http
+      .get('http://localhost:8080/starstone/api/result/winner' )
+      .toPromise()
+      .then(data => {
+        console.log('Winner: ', data);
+        return data as string;
+      });
+  }
+
+  getResultList() : Promise<Card[]>{
+    return this.http
+      .get('http://localhost:8080/starstone/api/result/list' )
+      .toPromise()
+      .then(data => {
+        console.log('Result: ', data);
+        return data as Card[];
+      });
+  }
+
 
   /*sendZergHand(zerg: Zerg) {
     let url = 'http://localhost:8080/starstone/api/general';
