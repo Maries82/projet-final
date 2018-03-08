@@ -64,7 +64,6 @@ export class StarstoneViewComponent implements OnInit {
 
   getPrincessHand(): Card[]{
 
-
     //console.log(this.princessCards);
     const list = this.princessCards.filter(o => o.selected).map(o=>o.card);
 
@@ -88,7 +87,7 @@ export class StarstoneViewComponent implements OnInit {
     const list = this.zergCards.filter(o => o.selected).map(o=>o.card);
     //this.zerg.zergHand = list;
 
-    //console.log(list);
+
 
     if (list.length == 8){
       console.log("Ok for the Zerg's hand !");

@@ -3,7 +3,10 @@ package io.pax.starstone.dao;
 import io.pax.starstone.domain.Game;
 import io.pax.starstone.domain.Winner;
 
+import javax.xml.registry.infomodel.User;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WinnerDao {
 
@@ -36,12 +39,59 @@ public class WinnerDao {
         return id;
     }
 
+
+
+    public List<Winner> getWinners() throws SQLException {
+
+        List<Winner> result = new ArrayList<>();
+        Connection conn = this.connector.getConnection();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM winner");
+
+        while (rs.next()) {
+            String name = rs.getString("name");
+            int id = rs.getInt("id");
+            Winner winner = new Winner(id, name);
+            result.add(winner);
+
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+        return result;
+
+    }
+
+    public static void insertCard() {
+
+        Game game = new Game();
+        game.generateNewRandomGame();
+        game.playGame();
+
+
+        System.out.println("////////////////////////////////////////////////// \n /////////////////////////////////////////////////////");
+        System.out.println(game.getGrid().toString());
+
+        try {
+            System.out.println(game.defineWinner());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
     public static void main(String[] args) throws SQLException {
         Game game = new Game();
-        String result = game.defineWinner();
+//        String result = game.defineWinner();
         WinnerDao dao = new WinnerDao();
-        int id = dao.defineWinner(result);
-        System.out.println(id);
-        System.out.println(dao.defineWinner(result));
+//        int id = dao.defineWinner(result);
+        dao.insertCard();
+//        System.out.println(id);
+//        System.out.println(dao.defineWinner(result));
+        System.out.println(dao.getWinners());
     }
 }
