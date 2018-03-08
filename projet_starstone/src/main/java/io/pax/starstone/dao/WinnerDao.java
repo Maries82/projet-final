@@ -64,6 +64,28 @@ public class WinnerDao {
 
     }
 
+    public Winner getTheWinner() throws SQLException {
+
+        Winner winner = null;
+
+        Connection conn = this.connector.getConnection();
+        Statement stmt = conn.createStatement();
+        String query = "SELECT * FROM winner ORDER BY id DESC LIMIT 1";
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            String name = rs.getString("name");
+            int id = rs.getInt("id");
+            winner = new Winner(id, name);
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+        return winner;
+    }
+
     public static void insertCard() {
 
         Game game = new Game();

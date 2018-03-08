@@ -41,16 +41,16 @@ export class DataService {
 
   }
 
-  fetchWinner(): Promise<Winner[]>{
-    return this.http
-      .get('http://localhost:8080/starstone/api/game/winner')
-      .toPromise()
-      .then(data => {
-        console.log(data);
-        return data as Winner[];
-      });
-
-  }
+  // fetchWinner(): Promise<Winner[]>{
+  //   return this.http
+  //     .get('http://localhost:8080/starstone/api/game/winner')
+  //     .toPromise()
+  //     .then(data => {
+  //       console.log(data);
+  //       return data as Winner[];
+  //     });
+  //
+  // }
 
 
   sendHands(princessHand : Card[], zergHand : Card[]){
@@ -114,13 +114,13 @@ console.log(handOfPrincess);
   }
 
 
-  getResultWinner() : Promise<string>{
+  getResultWinner() : Promise<Winner>{
     return this.http
-      .get('http://localhost:8080/starstone/api/result/winner' )
+      .get('http://localhost:8080/starstone/api/game/winner' )
       .toPromise()
       .then(data => {
         console.log('Winner: ', data);
-        return data as string;
+        return data as Winner;
       });
   }
 

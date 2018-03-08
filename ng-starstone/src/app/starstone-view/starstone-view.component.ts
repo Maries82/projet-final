@@ -3,6 +3,7 @@ import {DataService} from '../data-service.service';
 import {Card, CardOption} from '../model/card';
 import {Princess} from '../model/princess';
 import {Zerg} from "../model/zerg";
+import {Winner} from '../model/winner';
 
 @Component({
   selector: 'app-starstone-view',
@@ -20,8 +21,10 @@ export class StarstoneViewComponent implements OnInit {
   selectedPrincess : boolean;
 
   filledHand : boolean = false;
+  gameStarted: boolean = false;
 
-  resultWinner: string;
+  resultWinners: Winner[] = [];
+  resultWinner : Winner;
   resultList: Card[] = [];
 
   selectedCard : Card;
@@ -101,6 +104,8 @@ export class StarstoneViewComponent implements OnInit {
   }
 
   launchGame() {
+
+    this.gameStarted = true;
     if (this.getPrincessHand() != [] && this.getZergHand() != []) {
       console.log("Start Game !!!!");
 

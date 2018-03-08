@@ -14,11 +14,20 @@ import java.util.List;
 public class WinnerWs {
 
     @GET
-    @Path("winner")
+    @Path("winners")
     public List<Winner> getWinners() throws SQLException {
 
         WinnerDao dao = new WinnerDao();
         return  dao.getWinners();
+
+    }
+
+    @GET
+    @Path("winner")
+    public Winner getTheWinner() throws SQLException {
+
+        WinnerDao dao = new WinnerDao();
+        return  dao.getTheWinner();
 
     }
 

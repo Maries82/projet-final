@@ -53,14 +53,14 @@
       <button class="party" (click)="launchGame()">Start Game</button>
     </p>
 
-<!--    <p>
-      {{resultWinner}}
-    </p>-->
+    <p *ngIf="gameStarted">
+      {{resultWinner.name}}
+    </p>
 
-<!--    <ul>
-      <li *ngFor="let card of resultList">{{card.name}}</li>
+    <!--<ul>-->
+      <!--<li *ngFor="let card of resultList">{{card.name}}</li>-->
 
-    </ul>-->
+    <!--</ul>-->
 
   </div>
 
