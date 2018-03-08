@@ -3,25 +3,30 @@
   <div class="column">
 
     <h1 class=princess>Team Princess</h1>
-    <img width="300" alt="Princess"
+    <img width="400" height="200" alt="Princess"
          src="http://cache.cosmopolitan.fr/data/photo/w660_c17/4l/princesses-disney-small.jpg">
-    <button (click)="fetchPrincessDeck()">see Princess' deck</button>
 
-    <section *ngIf="selectedPrincess">
-      <ul>
-        <li *ngFor="let option of princessCards">
+    <p>
+      <button class="princessDeckButton" (click)="fetchPrincessDeck()">see Princess' deck</button>
+    </p>
 
-          <label>{{option.card.name}}</label>
+    <section class="princessDeck" *ngIf="selectedPrincess">
+      <div class="cardPrincess" *ngFor="let option of princessCards">
+        <div class="top">{{option.card.up}}</div>
+        <div class="right">{{option.card.right}}</div>
+        <div class="bottom">{{option.card.down}}</div>
+        <div class="left">{{option.card.left}}</div>
+
           <input
             type="checkbox"
             [checked] = false
             name="checkPrincess"
             [(ngModel)]="option.selected">
-            {{option.selected}}
-        </li>
-      </ul>
+      </div>
 
-      <button (click)="getPrincessHand()">Validate</button>
+      <div>
+        <button class="princessDeckButton" (click)="getPrincessHand()">Validate</button>
+      </div>
 
     </section>
 
@@ -30,7 +35,7 @@
   </div>
 
   <div class="column">
-    <h1>Regles du jeu</h1>
+    <h1 class="rulesGame">Règles du jeu</h1>
 
     <div class="rules games">
       Bienvenue sur Starstone. Les règles du jeu sont simples!
@@ -44,8 +49,9 @@
     </div>
 
     <br>
-
-    <button (click)="launchGame()">Start Game</button>
+    <p>
+      <button class="party" (click)="launchGame()">Start Game</button>
+    </p>
 
     <p>
       {{resultWinner}}
@@ -61,25 +67,33 @@
 
   <div class="column">
     <h1 class=zerg>Team Zerg</h1>
-    <img width="300" alt="Zerg"
+    <img width="400" height="200" alt="Zerg"
          src="https://cdnb.artstation.com/p/assets/images/images/003/018/799/large/vuong-nguyen-zeggies.jpg?1468551727">
-    <button (click)="fetchZergDeck()">see Zerg's deck</button>
 
-    <section *ngIf="selectedZerg">
-      <ul>
-        <li *ngFor="let option of zergCards">
+    <p>
+      <button class="zergDeckButton" (click)="fetchZergDeck()">see Zerg's deck</button>
+    </p>
 
-          <label>{{option.card.name}}</label>
+    <section class="zergDeck" *ngIf="selectedZerg">
+
+      <div class="cardZerg" *ngFor="let option of zergCards">
+        <div class="top">{{option.card.up}}</div>
+        <div class="right">{{option.card.right}}</div>
+        <div class="bottom">{{option.card.down}}</div>
+        <div class="left">{{option.card.left}}</div>
           <input
             type="checkbox"
             [checked] = false
             name="checkZerg"
             [(ngModel)]="option.selected">
-          {{option.selected}}
-        </li>
-      </ul>
 
-      <button (click)="getZergHand()">Validate</button>
+
+      </div>
+
+      <div>
+        <button class="zergDeckButton" (click)="getZergHand()">Validate</button>
+      </div>
+
     </section>
   </div>
 
