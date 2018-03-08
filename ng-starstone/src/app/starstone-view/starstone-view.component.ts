@@ -4,6 +4,8 @@ import {Card, CardOption} from '../model/card';
 import {Princess} from '../model/princess';
 import {Zerg} from "../model/zerg";
 
+
+
 @Component({
   selector: 'app-starstone-view',
   templateUrl: './starstone-view.component.html',
@@ -14,12 +16,17 @@ export class StarstoneViewComponent implements OnInit {
   count: number = 0;
   zergCards: CardOption[];
   zergHand: CardOption[] = [];
+
+
   princessCards: CardOption[];
   princessHand: CardOption[] = [];
   selectedZerg : boolean;
   selectedPrincess : boolean;
+  selectedGame : boolean;
 
   filledHand : boolean = false;
+
+  gameStarted : boolean =false;
 
   resultWinner: string;
   resultList: Card[] = [];
@@ -44,6 +51,7 @@ export class StarstoneViewComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
   fetchZergDeck(){
     this.selectedZerg = true;
@@ -101,6 +109,8 @@ export class StarstoneViewComponent implements OnInit {
   }
 
   launchGame() {
+
+    this.gameStarted = true;
     if (this.getPrincessHand() != [] && this.getZergHand() != []) {
       console.log("Start Game !!!!");
 

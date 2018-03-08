@@ -5,39 +5,40 @@
     <h1 class=princess>Team Princess</h1>
     <img width="400" height="200" alt="Princess"
          src="http://cache.cosmopolitan.fr/data/photo/w660_c17/4l/princesses-disney-small.jpg">
-
     <p>
       <button class="princessDeckButton" (click)="fetchPrincessDeck()">see Princess' deck</button>
     </p>
 
     <section class="princessDeck" *ngIf="selectedPrincess">
+
       <div class="cardPrincess" *ngFor="let option of princessCards">
+
+
         <div class="top">{{option.card.up}}</div>
         <div class="right">{{option.card.right}}</div>
         <div class="bottom">{{option.card.down}}</div>
         <div class="left">{{option.card.left}}</div>
-
-          <input
-            type="checkbox"
-            [checked] = false
-            name="checkPrincess"
-            [(ngModel)]="option.selected">
+        <input
+          class="check"
+          type="checkbox"
+          [checked]=false
+          name="checkPrincess"
+          [(ngModel)]="option.selected">
       </div>
 
       <div>
         <button class="princessDeckButton" (click)="getPrincessHand()">Validate</button>
       </div>
 
+
     </section>
-
-
 
   </div>
 
   <div class="column">
     <h1 class="rulesGame">Règles du jeu</h1>
 
-    <div class="rules games">
+    <div class="rules">
       Bienvenue sur Starstone. Les règles du jeu sont simples!
       <p>
         Il suffit de voler un maximum de cartes à l'adversaire à chaque partie. Compris? euh...?
@@ -49,24 +50,30 @@
     </div>
 
     <br>
-    <p>
+    <section>
       <button class="party" (click)="launchGame()">Start Game</button>
-    </p>
 
-<!--    <p>
-      {{resultWinner}}
-    </p>-->
+      <div *ngIf="gameStarted" class="gameContainer">
+        <div class="carre" *ngFor="let card of resultList">
+          <div [ngClass]="{'cardPrincess': card.color === 'princess','cardZerg': card.color === 'zerg'}">
+            <div class="top">{{card.up}}</div>
+            <div class="right">{{card.right}}</div>
+            <div class="bottom">{{card.down}}</div>
+            <div class="left">{{card.left}}</div>
+          </div>
+        </div>
+      </div>
 
-<!--    <ul>
-      <li *ngFor="let card of resultList">{{card.name}}</li>
+    </section>
 
-    </ul>-->
+
+
 
   </div>
 
 
   <div class="column">
-    <h1 class=zerg>Team Zerg</h1>
+    <h1 class="zerg">Team Zerg</h1>
     <img width="400" height="200" alt="Zerg"
          src="https://cdnb.artstation.com/p/assets/images/images/003/018/799/large/vuong-nguyen-zeggies.jpg?1468551727">
 
@@ -75,19 +82,18 @@
     </p>
 
     <section class="zergDeck" *ngIf="selectedZerg">
-
       <div class="cardZerg" *ngFor="let option of zergCards">
+
         <div class="top">{{option.card.up}}</div>
         <div class="right">{{option.card.right}}</div>
         <div class="bottom">{{option.card.down}}</div>
         <div class="left">{{option.card.left}}</div>
-          <input
-            type="checkbox"
-            [checked] = false
-            name="checkZerg"
-            [(ngModel)]="option.selected">
-
-
+        <input
+          class="check"
+          type="checkbox"
+          [checked]=false
+          name="checkZerg"
+          [(ngModel)]="option.selected">
       </div>
 
       <div>
@@ -95,18 +101,11 @@
       </div>
 
     </section>
+
   </div>
+
 
 </div>
 
-  <div class="gameContainer">
-    <div class="carre" *ngFor="let card of resultList">
-      <div class="top">{{card.up}}</div>
-      <div class="right">{{card.right}}</div>
-      <div class="bottom">{{card.down}}</div>
-      <div class="left">{{card.left}}</div>
-    </div>
-
-  </div>
 
 

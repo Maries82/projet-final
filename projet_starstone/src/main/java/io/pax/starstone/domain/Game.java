@@ -185,7 +185,6 @@ public class Game {
         int scorePrincess = 0;
 
 
-
         for (int i = 0; i <100 ; i++) {
             game.generateNewRandomGame();
             game.playGameWithRandomCardInsertion();

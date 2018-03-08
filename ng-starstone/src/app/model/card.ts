@@ -17,5 +17,10 @@ export class CardOption{
 
   constructor(public card:Card){
 
+
+
+
+
+
   }
 }

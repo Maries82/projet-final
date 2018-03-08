@@ -37,20 +37,23 @@
 [type="checkbox"] {
   width: 17px;
   height: 17px; /* dim. de la case */
+
 }
 
+
+
 .gameContainer {
-  width: 440px;
-  height: 440px;
+  width: 450px;
+  height: 450px;
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGvFc8O8Q783XKjgMbwFp_hH6Rg4n_YPM3O4Ivv3THCehAYbvJw);
   margin-left: auto;
   margin-right: auto;
 }
 
 .carre{
-  background: green;
-  width: 100px;
-  height: 100px;
+
+  width: 102px;
+  height: 102px;
   margin: 5px;
   float: left;
   position: relative;
@@ -98,7 +101,7 @@
   font-family: "Comic Sans MS";
   font-size: 18px;
   Font-Weight: Bold;
-}
+ }
 
 .cardPrincess > .check{
   width: 100%;
@@ -144,11 +147,14 @@
   font-size: 18px;
 }
 
+
 .cardZerg > .check{
-  width: 100%;
-  left : 38px;
-  top : 1px;
-}
+   width: 100%;
+   left : 38px;
+   top : 1px;
+ }
+
+
 
 .cardZerg > .top {
   top: 3px;
@@ -183,8 +189,6 @@
   horiz-align:center;
 }
 
-section.zergDeck{
-}
 
 .zergDeckButton{
   border-radius: 8px;
@@ -197,8 +201,15 @@ section.zergDeck{
   horiz-align:center;
 }
 
+
 section.princessDeck{
+
 }
+
+section.zergDeck{
+
+}
+
 
 .princessDeckButton{
   border-radius: 8px;
@@ -210,4 +221,3 @@ section.princessDeck{
   height : 50px;
   horiz-align:center;
 }
-
