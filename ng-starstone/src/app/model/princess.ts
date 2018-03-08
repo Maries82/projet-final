@@ -7,5 +7,6 @@ export class Princess {
   name: string = "princess";
 
   princessCards: Card[] = [];
+  princessHand: Card[] = [];
 
 }

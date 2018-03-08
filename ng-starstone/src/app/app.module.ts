@@ -7,6 +7,7 @@ import { StarstoneViewComponent } from './view/starstone-view/starstone-view.com
 import {HttpClientModule} from "@angular/common/http";
 import {DataService} from "./data-service.service";
 import { GameViewComponent } from './view/game-view/game-view.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import { GameViewComponent } from './view/game-view/game-view.component';
     GameViewComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule,
+    BrowserModule, HttpClientModule,FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

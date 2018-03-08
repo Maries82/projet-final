@@ -3,6 +3,7 @@
 
 export class Card {
 
+  order: number
   up: number;
   right: number;
   down: number;
@@ -11,4 +12,10 @@ export class Card {
   color: string;
 }
 
+export class CardOption{
+  selected = false;
 
+  constructor(public card:Card){
+
+  }
+}

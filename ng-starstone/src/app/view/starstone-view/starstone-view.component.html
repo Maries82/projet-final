@@ -9,13 +9,23 @@
 
     <section *ngIf="selectedPrincess">
       <ul>
-        <li *ngFor="let card of princessCards">
-          <input type="checkbox">
-          <label>{{card.name}}</label>
+        <li *ngFor="let option of princessCards">
 
+          <label>{{option.card.name}}</label>
+          <input
+            type="checkbox"
+            [checked] = false
+            name="checkPrincess"
+            [(ngModel)]="option.selected">
+            {{option.selected}}
         </li>
       </ul>
+
+      <button (click)="getPrincessHand()">Validate</button>
+
     </section>
+
+
 
   </div>
 
@@ -35,12 +45,7 @@
 
     <br>
 
-    <form action="page.php" method="POST" TARGET="_BLANK">
-      <input type="submit" name="bouton" value="CLIQUEZ">
-    </form>
-
-
-
+    <button (click)="startGame()">Start Game</button>
 
   </div>
 
@@ -53,11 +58,19 @@
 
     <section *ngIf="selectedZerg">
       <ul>
-        <li *ngFor="let card of zergCards">
-          <input type="checkbox">
-          <label>{{card.name}}</label>
+        <li *ngFor="let option of zergCards">
+
+          <label>{{option.card.name}}</label>
+          <input
+            type="checkbox"
+            [checked] = false
+            name="checkZerg"
+            [(ngModel)]="option.selected">
+          {{option.selected}}
         </li>
       </ul>
+
+      <button (click)="getZergHand()">Validate</button>
     </section>
   </div>
 

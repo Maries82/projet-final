@@ -6,5 +6,5 @@ export class Zerg {
   name: string = "zerg";
 
   zergCards: Card[] = [];
-
+  zergHand: Card[] = [];
 }
