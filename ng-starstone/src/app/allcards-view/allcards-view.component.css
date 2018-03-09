@@ -1,0 +1,40 @@
+h1{
+  color: blue;
+  font-family: "Comic Sans MS";
+  text-align: center;
+}
+
+.carre{
+  width: 100px;
+  height: 100px;
+  margin: 4px;
+  float: left;
+  position: relative;
+}
+
+.carre > * {
+  position: absolute;
+  color: blue;
+}
+
+.carre > .top {
+  top: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+.carre > .right {
+  right: 5px;
+  line-height: 100px;
+}
+
+.carre > .bottom {
+  bottom: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.carre > .left {
+  left: 5px;
+  line-height: 100px;
+}
