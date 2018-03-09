@@ -20,6 +20,9 @@ export class StarstoneViewComponent implements OnInit {
   selectedZerg: boolean;
   selectedPrincess: boolean;
 
+  selectedPrincessRandom: boolean = false;
+  selectedZergRandom: boolean = false;
+
   filledHand : boolean = false;
 
   gameStarted : boolean =false;
@@ -70,7 +73,10 @@ export class StarstoneViewComponent implements OnInit {
   getPrincessHand(): Card[]{
 
     //console.log(this.princessCards);
-    const list = this.princessCards.filter(o => o.selected).map(o => o.card);
+
+      const list = this.princessCards.filter(o => o.selected).map(o => o.card);
+
+
 
     //console.log(list);
 
@@ -88,9 +94,8 @@ export class StarstoneViewComponent implements OnInit {
   getZergHand(): Card[]{
 
 
-    //console.log(this.zergCards);
-    const list = this.zergCards.filter(o => o.selected).map(o => o.card);
-    //this.zerg.zergHand = list;
+      const list = this.zergCards.filter(o => o.selected).map(o => o.card);
+
 
 
 
@@ -104,6 +109,61 @@ export class StarstoneViewComponent implements OnInit {
     }
 
   }
+
+  selectRandomPrincessHand(){
+
+    let r = 0;
+    let list : Card[] = this.princessCards.filter(o => o.selected).map(o => o.card);
+
+    for (let i = 0; i < (8 - list.length); ) {
+      if (this.selectedPrincess) {
+        r = Math.floor(Math.random() * this.princessCards.length);
+
+
+        if (this.princessCards[r].selected == true) {
+          continue;
+        } else {
+          this.princessCards[r].selected = true;
+          //list.push(this.princessCards[r].card);
+          i++
+
+        }
+      }
+    }
+
+    this.selectedPrincessRandom = true;
+
+    //return list;
+  }
+
+  selectRandomZergHand(){
+
+    let r = 0;
+    let list : Card[] = this.zergCards.filter(o => o.selected).map(o => o.card);
+    console.log("Taille de la liste : " + list.length);
+
+    for (let i = 0; i < (8-list.length); ) {
+      if (this.selectedZerg) {
+        r = Math.floor(Math.random() * this.zergCards.length);
+
+
+        if (this.zergCards[r].selected == true) {
+          continue;
+        } else {
+          this.zergCards[r].selected = true;
+          //list.push(this.zergCards[r].card);
+          i++
+
+        }
+      }
+    }
+
+    this.selectedZergRandom = true;
+
+    //return list;
+  }
+
+
 
   launchGame() {
 

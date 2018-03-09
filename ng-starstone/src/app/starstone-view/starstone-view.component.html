@@ -7,6 +7,7 @@
          src="http://cache.cosmopolitan.fr/data/photo/w660_c17/4l/princesses-disney-small.jpg">
     <p>
       <button class="princessDeckButton" (click)="fetchPrincessDeck()">see Princess' deck</button>
+      <button *ngIf="selectedPrincess" class="princessDeckButton" (click)="selectRandomPrincessHand()">Pick 8 cards</button>
     </p>
 
     <section *ngIf="selectedPrincess">
@@ -81,6 +82,7 @@
 
     <p>
       <button class="zergDeckButton" (click)="fetchZergDeck()">see Zerg's deck</button>
+      <button *ngIf="selectedPrincess" class="zergDeckButton" (click)="selectRandomZergHand()">Pick 8 cards</button>
     </p>
 
     <section *ngIf="selectedZerg">
