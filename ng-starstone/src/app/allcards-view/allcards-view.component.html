@@ -1,13 +1,8 @@
 <h1>All cards available here !! </h1>
 
 <p>
-  <button class="party">Click HERE to buy Selected Cards</button>
+  <button class="party" (click)="launchGame()">Click HERE to buy Selected Cards</button>
 </p>
-
-<p>
-<button class="party" (click)="pageService.toggle()">Back to the Game</button>
-</p>
-
 
   <div class="carre" *ngFor="let card of allCards">
     <div class="top">{{card.up}}</div>

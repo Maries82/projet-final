@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Card} from './model/card';
+import {Card, CardOption} from './model/card';
 import {Zerg} from "./model/zerg";
 
 import {Princess} from "./model/princess";
