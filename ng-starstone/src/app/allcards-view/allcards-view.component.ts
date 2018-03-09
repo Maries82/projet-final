@@ -1,7 +1,6 @@
-///<reference path="../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
 import { Component, OnInit } from '@angular/core';
 import {DataService} from "../data-service.service";
-import {Card} from "../model/card";
+import {Card, CardOption} from "../model/card";
 import {PageServiceService} from "../page-service.service";
 
 @Component({
@@ -12,23 +11,34 @@ import {PageServiceService} from "../page-service.service";
 export class AllcardsViewComponent implements OnInit {
 
 
-  allCards: Card[] = [];
+  allCards: CardOption[];
+
+  cardBoughtHand : Card[] = [];
+
+ selectedCardToBuy: boolean = false;
+
 
   constructor(public dataService: DataService, public pageService : PageServiceService) {
     dataService.fetchGlobalDeck()
-      .then(cards => this.allCards = cards)
+      .then(cards => this.allCards = cards.map(c => new CardOption(c)))
       .then(cards => console.log("cards : " + cards));
   }
 
   ngOnInit() {
   }
 
-/*  fetchGlobalDeck(){
-    this.dataService.fetchGlobalDeck()
-      .then(cards => this.allCards = cards)
-      .then(cards => console.log("cards : " + cards));
-    //.then(cards => this.allCards = cards);
-    //.then(() => console.log("AllCards : " + this.allCards))
-  }*/
+  getCardsBought(): Card[] {
+    console.log(this.cardBoughtHand);
+
+    const boughtCard = this.allCards.filter(o => o.selected).map(o => o.card);
+
+
+console.log(boughtCard);
+    /*this.selectedCardToBuy = true;
+    this.selectedCards = false;*/
+    this.cardBoughtHand = boughtCard;
+console.log(this.cardBoughtHand);
+    return boughtCard;
+  }
 
 }
