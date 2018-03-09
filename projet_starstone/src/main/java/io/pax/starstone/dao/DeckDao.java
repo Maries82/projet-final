@@ -84,6 +84,8 @@ public class DeckDao {
         return result;
     }
 
+
+
     public List<Card> getZergDeck () throws SQLException {
 
         List<Card> result = new ArrayList<>();
@@ -115,20 +117,36 @@ public class DeckDao {
         return result;
     }
 
+    public List<Card> getGlobalDeck () throws SQLException {
 
+        List<Card> result = new ArrayList<>();
 
+        Connection conn = this.connector.getConnection();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM global_deck");
 
+        while (rs.next()) {
+            int cardId = rs.getInt("id_card");
+            int up = rs.getInt("up_side");
+            int right = rs.getInt("right_side");
+            int down = rs.getInt("down_side");
+            int left = rs.getInt("left_side");
+            Card card = new Card(up, right, down, left);
+           result.add(card);
+        }
+        rs.close();
+        stmt.close();
+        conn.close();
 
-
-
-
+        return result;
+    }
 
 
     public static void main(String[] args) throws SQLException {
         DeckDao dao = new DeckDao();
         //dao.createDeck();
 
-        //System.out.println(dao.getPrincessDeck());
+        System.out.println(dao.getGlobalDeck());
 
     }
 

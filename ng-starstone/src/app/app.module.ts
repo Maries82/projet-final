@@ -7,12 +7,14 @@ import { StarstoneViewComponent } from './starstone-view/starstone-view.componen
 import {HttpClientModule} from "@angular/common/http";
 import {DataService} from "./data-service.service";
 import {FormsModule} from "@angular/forms";
+import { AllcardsViewComponent } from './allcards-view/allcards-view.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StarstoneViewComponent
+    StarstoneViewComponent,
+    AllcardsViewComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,FormsModule

@@ -1,14 +1,19 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Card} from './model/card';
-import {Zerg} from './model/zerg';
+import {Zerg} from "./model/zerg";
 
-import {Princess} from './model/princess';
+import {Princess} from "./model/princess";
 import {Winner} from './model/winner';
+import {any} from "codelyzer/util/function";
+
+
 
 
 @Injectable()
 export class DataService {
+
+
 
 
   constructor(public http: HttpClient) {
@@ -18,7 +23,7 @@ export class DataService {
 
   fetchPrincessDeck(): Promise<Card[]> {
     return this.http
-      .get('http://localhost:8080/starstone/api/general/princess')
+      .get('http://localhost:8080/starstone/api/general/princess' )
       .toPromise()
       .then(data => {
         console.log('princess\'s deck: ', data);
@@ -37,47 +42,57 @@ export class DataService {
 
   }
 
-  // fetchWinner(): Promise<Winner[]>{
-  //   return this.http
-  //     .get('http://localhost:8080/starstone/api/game/winner')
-  //     .toPromise()
-  //     .then(data => {
-  //       console.log(data);
-  //       return data as Winner[];
-  //     });
-  //
-  // }
+  fetchWinner(): Promise<Winner[]>{
+    return this.http
+      .get('http://localhost:8080/starstone/api/game/winner')
+      .toPromise()
+      .then(data => {
+        console.log(data);
+        return data as Winner[];
+      });
+
+  }
+
+  fetchGlobalDeck() : Promise<Card[]>{
+    return this.http
+      .get('http://localhost:8080/starstone/api/general/global' )
+      .toPromise()
+      .then((data : any) => {
+        console.log('Result dataservice: ', data.cards);
+        return data.cards as Card[];
+      });
+  }
 
 
-  sendHands(princessHand: Card[], zergHand: Card[]) {
+  sendHands(princessHand : Card[], zergHand : Card[]){
 
     let url = 'http://localhost:8080/starstone/api/general/two';
-    let handOfPrincess: Card[] = [];
-    let handOfZerg: Card[] = [];
+    let handOfPrincess : Card[] = [];
+    let handOfZerg : Card[] = [];
 
 
     //console.log("Princess : " + princess.princessHand[3].name + " - " + princess.princessHand[3].color + " - " + princess.princessHand[3].order);
 
 
-    /*    for (let i = 0; i < 8; i++){
-          let card : Card = {
+/*    for (let i = 0; i < 8; i++){
+      let card : Card = {
 
-          }
-        }*/
+      }
+    }*/
 
 
-    for (let i = 0; i < 8; i++) {
-      let princessCard: Card = {
-        name: princessHand[i].name,
-        order: princessHand[i].order,
-        up: princessHand[i].up,
-        right: princessHand[i].right,
-        down: princessHand[i].down,
-        left: princessHand[i].left,
-        color: princessHand[i].color
-      };
+for (let i = 0; i < 8; i++) {
+  let princessCard : Card = {
+    name: princessHand[i].name,
+    order: princessHand[i].order,
+    up: princessHand[i].up,
+    right: princessHand[i].right,
+    down: princessHand[i].down,
+    left: princessHand[i].left,
+    color: princessHand[i].color
+  }
 
-      handOfPrincess.push(princessCard);
+  handOfPrincess.push(princessCard);
 
       let zergCard: Card = {
         name: zergHand[i].name,
@@ -91,19 +106,22 @@ export class DataService {
       handOfZerg.push(zergCard);
     }
 
-    console.log(handOfZerg[0]);
-    console.log(handOfPrincess);
+console.log(handOfZerg[0]);
+console.log(handOfPrincess);
 
 
     let dto = [handOfPrincess, handOfZerg];
 
 
+
+
     console.log('Sending DTO : ' + dto);
+
 
 
     return this.http.post(url, dto)
       .toPromise()
-      .then(data => console.log('Success :) ', data));
+      .then(data => console.log('Success :) ', data))
   }
 
 
@@ -117,9 +135,9 @@ export class DataService {
       });
   }
 
-  getResultList(): Promise<Card[]> {
+  getResultList() : Promise<Card[]>{
     return this.http
-      .get('http://localhost:8080/starstone/api/result/list')
+      .get('http://localhost:8080/starstone/api/result/list' )
       .toPromise()
       .then(data => {
         console.log('Result: ', data);
@@ -146,18 +164,18 @@ export class DataService {
       .then(data => console.log('Success :) ', data))
   }*/
 
-  /*  createTopic(topic: Topic) {
-      let url = 'http://localhost:8080/forum/api/topics';
-      let dto = { // Data Transfer Object pour Jax-B
-        title: topic.title,
-        admin: topic.admin
-      }
+/*  createTopic(topic: Topic) {
+    let url = 'http://localhost:8080/forum/api/topics';
+    let dto = { // Data Transfer Object pour Jax-B
+      title: topic.title,
+      admin: topic.admin
+    }
 
-      console.log('Sending topicDTO' + dto);
+    console.log('Sending topicDTO' + dto);
 
-      return this.http.post(url, dto)
-        .toPromise()
-        .then(data => console.log('Success :) ', data))
+    return this.http.post(url, dto)
+      .toPromise()
+      .then(data => console.log('Success :) ', data))
 
-    }*/
+  }*/
 }

@@ -1,6 +1,4 @@
 
-
-
 export class Card {
 
   order: number
@@ -16,11 +14,5 @@ export class CardOption{
   selected = false;
 
   constructor(public card:Card){
-
-
-
-
-
-
   }
 }
