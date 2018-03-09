@@ -31,6 +31,20 @@
       <button class="princessDeckButton" (click)="getPrincessHand()">Validate</button>
     </section>
 
+    <section *ngIf="selectedPrincessHand">
+      <div class="princessDeck">
+        <div class="cardPrincess" *ngFor="let card of princessHand">
+          <div class="top">{{card.up}}</div>
+          <div class="right">{{card.right}}</div>
+          <div class="bottom">{{card.down}}</div>
+          <div class="left">{{card.left}}</div>
+        </div>
+      </div>
+
+
+
+    </section>
+
 
   </div>
 
@@ -82,7 +96,7 @@
 
     <p>
       <button class="zergDeckButton" (click)="fetchZergDeck()">see Zerg's deck</button>
-      <button *ngIf="selectedPrincess" class="zergDeckButton" (click)="selectRandomZergHand()">Pick 8 cards</button>
+      <button *ngIf="selectedZerg" class="zergDeckButton" (click)="selectRandomZergHand()">Pick 8 cards</button>
     </p>
 
     <section *ngIf="selectedZerg">
@@ -105,6 +119,20 @@
       <div>
         <button class="zergDeckButton" (click)="getZergHand()">Validate</button>
       </div>
+
+    </section>
+
+    <section *ngIf="selectedZergHand">
+      <div class="zergDeck">
+        <div class="cardZerg" *ngFor="let card of zergHand">
+          <div class="top">{{card.up}}</div>
+          <div class="right">{{card.right}}</div>
+          <div class="bottom">{{card.down}}</div>
+          <div class="left">{{card.left}}</div>
+        </div>
+      </div>
+
+
 
     </section>
 

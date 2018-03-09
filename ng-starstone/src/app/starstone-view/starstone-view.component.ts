@@ -14,11 +14,15 @@ export class StarstoneViewComponent implements OnInit {
 
   count: number = 0;
   zergCards: CardOption[];
-  zergHand: CardOption[] = [];
+  zergHand: Card[] = [];
   princessCards: CardOption[];
-  princessHand: CardOption[] = [];
+  princessHand: Card[] = [];
   selectedZerg: boolean;
   selectedPrincess: boolean;
+
+  selectedZergHand: boolean = false;
+  selectedPrincessHand: boolean = false;
+
 
   selectedPrincessRandom: boolean = false;
   selectedZergRandom: boolean = false;
@@ -82,6 +86,9 @@ export class StarstoneViewComponent implements OnInit {
 
     if (list.length == 8){
       console.log("Ok for the Princess' hand !");
+      this.selectedPrincessHand = true;
+      this.selectedPrincess = false;
+      this.princessHand = list;
       return list;
     } else if (list.length < 8) {
       console.log("You need to have 8 cards in your hand, please, keep going.")
@@ -101,6 +108,9 @@ export class StarstoneViewComponent implements OnInit {
 
     if (list.length == 8){
       console.log("Ok for the Zerg's hand !");
+      this.selectedZergHand = true;
+      this.selectedZerg = false;
+      this.zergHand = list;
       return list;
     } else if (list.length < 8) {
       console.log("You need to have 8 cards in your hand, please, keep going.")
