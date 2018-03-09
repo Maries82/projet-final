@@ -9,7 +9,6 @@ import {DataService} from "./data-service.service";
 import {FormsModule} from "@angular/forms";
 import {PageServiceService} from "./page-service.service";
 import { AllcardsViewComponent } from './allcards-view/allcards-view.component';
-//import { AllcardsViewComponent } from './allcards-view/allcards-view.component';
 
 
 @NgModule({
@@ -17,7 +16,7 @@ import { AllcardsViewComponent } from './allcards-view/allcards-view.component';
     AppComponent,
     StarstoneViewComponent,
     AllcardsViewComponent,
-    //AllcardsViewComponent
+    AllcardsViewComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,FormsModule
