@@ -3,6 +3,7 @@ package io.pax.starstone.webservice;
 import io.pax.starstone.business.HandBusiness;
 import io.pax.starstone.dao.DeckDao;
 import io.pax.starstone.domain.Card;
+import io.pax.starstone.domain.GeneralDeck;
 import io.pax.starstone.domain.Hand;
 
 import javax.ws.rs.*;
@@ -35,6 +36,20 @@ public class DeckWs {
         return dao.getZergDeck();
     }
 
+    @GET
+    @Path("global")
+    public GeneralDeck generalDeck() throws SQLException {
+        GeneralDeck deck = new GeneralDeck();
+
+        try {
+            int id = new DeckDao().createDeck();
+            return new GeneralDeck();
+        } catch (SQLException e) {
+            throw e;
+        }
+
+    }
+
     @POST
     @Path("one")
     public Hand createOneHand(List<Card> princessHand) {
@@ -42,11 +57,10 @@ public class DeckWs {
         List<Card> princessHandList = new ArrayList<>();
 
 
-
         String colorP = princessHand.get(0).getColor();
 
 
-        for (int index = 0; index < 8; index++){
+        for (int index = 0; index < 8; index++) {
             princessHandList.add(new Card(
                     princessHand.get(index).getOrder(),
                     princessHand.get(index).getUp(),
@@ -81,7 +95,7 @@ public class DeckWs {
         String colorZ = zergHand.get(0).getColor();
         String colorP = princessHand.get(0).getColor();
 
-        for (int index = 0; index < 8; index++){
+        for (int index = 0; index < 8; index++) {
             princessHandList.add(new Card(
                     princessHand.get(index).getOrder(),
                     princessHand.get(index).getUp(),
@@ -109,7 +123,7 @@ public class DeckWs {
 
 
         HandBusiness handy = new HandBusiness();
-        handy.getTwoHands(pHand,zHand);
+        handy.getTwoHands(pHand, zHand);
 
 
         System.out.println("Resultat du WS : " + hands);
@@ -118,18 +132,7 @@ public class DeckWs {
     }
 
 
-/*    @POST
-    public GeneralDeck createDeck() throws SQLException {
-        //GeneralDeck deck = new GeneralDeck();
 
-        try {
-            int id = new DeckDao().createDeck();
-            return new GeneralDeck();
-        } catch (SQLException e) {
-            throw e;
-        }
-
-    }*/
 
 
 }

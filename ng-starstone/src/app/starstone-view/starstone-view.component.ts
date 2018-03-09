@@ -28,6 +28,8 @@ export class StarstoneViewComponent implements OnInit {
   resultWinner: Winner;
   resultList: Card[] = [];
 
+
+
   selectedCard : Card;
   princess: Princess = {
     id: 1,
@@ -50,6 +52,7 @@ export class StarstoneViewComponent implements OnInit {
   ngOnInit() {
   }
 
+
   fetchZergDeck(){
     this.selectedZerg = true;
 
@@ -62,7 +65,7 @@ export class StarstoneViewComponent implements OnInit {
     this.selectedPrincess = true;
 
     this.dataService.fetchPrincessDeck()
-      .then(pCards => this.princessCards = pCards.map(c => new CardOption(c)));
+      .then(pCards => this.princessCards = pCards.map(c=>new CardOption(c)))
 
   }
 
@@ -70,7 +73,7 @@ export class StarstoneViewComponent implements OnInit {
   getPrincessHand(): Card[]{
 
     //console.log(this.princessCards);
-    const list = this.princessCards.filter(o => o.selected).map(o => o.card);
+    const list = this.princessCards.filter(o => o.selected).map(o=>o.card);
 
     //console.log(list);
 
@@ -89,7 +92,7 @@ export class StarstoneViewComponent implements OnInit {
 
 
     //console.log(this.zergCards);
-    const list = this.zergCards.filter(o => o.selected).map(o => o.card);
+    const list = this.zergCards.filter(o => o.selected).map(o=>o.card);
     //this.zerg.zergHand = list;
 
 
@@ -141,6 +144,6 @@ export class StarstoneViewComponent implements OnInit {
     return this.dataService.getResultList();
   }
 
-}
+  }
 
 
