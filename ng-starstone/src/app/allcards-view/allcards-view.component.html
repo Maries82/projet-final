@@ -1,19 +1,21 @@
+<h1>All cards available here !! </h1>
 
-<h1>All Cards Available</h1>
+<p>
+  <button class="party" (click)="launchGame()">Click HERE to buy Selected Cards</button>
+</p>
 
+  <div class="carre" *ngFor="let card of allCards">
+    <div class="top">{{card.up}}</div>
+    <div class="right">{{card.right}}</div>
+    <div class="bottom">{{card.down}}</div>
+    <div class="left">{{card.left}}</div>
+    <input
+      class="check"
+      type="checkbox"
+      [checked]=false
+      name="check"
+    >
 
-<button (click)="fetchGlobalDeck()">Validate</button>
+  </div>
 
-<ul>
-  <li *ngFor="let card of allCards" >
-    {{card.name}}
-  </li>
-</ul>
-
-
-
-     <!-- <div class="top">{{card.up}}</div>
-      <div class="right">{{card.right}}</div>
-      <div class="bottom">{{card.down}}</div>
-      <div class="left">{{card.left}}</div>-->
 
