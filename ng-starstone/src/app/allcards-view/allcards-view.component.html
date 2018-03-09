@@ -1,0 +1,19 @@
+
+<h1>All Cards Available</h1>
+
+
+<button (click)="fetchGlobalDeck()">Validate</button>
+
+<ul>
+  <li *ngFor="let card of allCards" >
+    {{card.name}}
+  </li>
+</ul>
+
+
+
+     <!-- <div class="top">{{card.up}}</div>
+      <div class="right">{{card.right}}</div>
+      <div class="bottom">{{card.down}}</div>
+      <div class="left">{{card.left}}</div>-->
+

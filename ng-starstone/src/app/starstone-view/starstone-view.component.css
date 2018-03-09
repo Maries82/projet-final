@@ -190,6 +190,15 @@
   horiz-align:center;
 }
 
+.resultWinner{
+  transform: scale(2,3);
+  font-family:"Comic Sans MS";
+  color: #f44336;
+  width: 40%;
+  height : 50px;
+  horiz-align:center;
+  text-align: center;
+}
 
 .zergDeckButton{
   border-radius: 8px;

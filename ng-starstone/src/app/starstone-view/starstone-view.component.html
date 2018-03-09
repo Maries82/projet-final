@@ -31,17 +31,13 @@
       <button class="princessDeckButton" (click)="getPrincessHand()">Validate</button>
     </section>
 
-    <section *ngIf="selectedPrincessHand ">
-      <div *ngFor="let card of princessHand">
-
-        <div class="cardPrincess" >
-
+    <section *ngIf="selectedPrincessHand">
+      <div class="princessDeck">
+        <div class="cardPrincess" *ngFor="let card of princessHand">
           <div class="top">{{card.up}}</div>
           <div class="right">{{card.right}}</div>
           <div class="bottom">{{card.down}}</div>
           <div class="left">{{card.left}}</div>
-
-
         </div>
 
 <!--        <input
@@ -96,6 +92,17 @@
           </div>
         </div>
       </div>
+      <br>
+      <br>
+      <br>
+      <div class ="resultWinner" *ngIf="gameStarted" >
+        <img class ="resultWinner" width="10" height="10" alt="Coupe"
+             src="http://www.savoirfhair-coiffure.fr/wp-content/uploads/2017/03/record-coupe__ni4j4p.png">
+        <{{resultWinner?.name}}
+      </div>
+
+
+
 
     </section>
 
