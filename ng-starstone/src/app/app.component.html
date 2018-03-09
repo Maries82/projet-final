@@ -6,9 +6,10 @@
 </header>
 
 
-<!--<app-starstone-view></app-starstone-view>-->
+<app-starstone-view *ngIf="pageService.isGame()"></app-starstone-view>
 
-<app-allcards-view></app-allcards-view>
+<!--<app-allcards-view *ngIf="pageService.isAchat()"></app-allcards-view>-->
+
 
 
 

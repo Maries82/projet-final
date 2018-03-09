@@ -128,9 +128,7 @@ public class Game {
     }
 
     public void playGame(){
-        List<Card> cardsToBePlayed = new ArrayList<>();
-        generateCardsToBePlayed(cardsToBePlayed);
-
+        List<Card> cardsToBePlayed = generateCardsToBePlayed();        System.out.println(cardsToBePlayed.toString());
         int count = 0;
         for (int j = 3; j > -1; j--) {
             for (int i = 0; i < 4; i++){
@@ -139,14 +137,11 @@ public class Game {
                 System.out.println(this.grid.toString());
                 count++;
             }
-
         }
-
     }
 
     public void playGameWithRandomCardInsertion(){
-        List<Card> cardsToBePlayed = new ArrayList<>();
-        generateCardsToBePlayed(cardsToBePlayed);
+        List<Card> cardsToBePlayed = generateCardsToBePlayed();;
 
         int count = 0;
         while (!this.grid.isFull()){
@@ -155,28 +150,22 @@ public class Game {
             System.out.println(this.grid.toString());
             count++;
         }
-
-
-
     }
 
-    private void generateCardsToBePlayed(List<Card> cardsToBePlayed) {
+    private List<Card> generateCardsToBePlayed() {
+        List<Card> cardsToBePlayed = new ArrayList<>();
         for (int i = 0; i < handZerg.getCards().size() ; i++) {
-
             Card cardZ = this.handZerg.getCards().get(i);
             Card cardP = this.handPrincess.getCards().get(i);
-            int idCard = 2*i;
-
-            if (i<4 || (i> 7 && i<12)){
+            if (i<2 || (i>3 && i<6) ){
                 cardsToBePlayed.add(cardZ);
                 cardsToBePlayed.add(cardP);
-            }
-            else {
+            } else {
                 cardsToBePlayed.add(cardP);
                 cardsToBePlayed.add(cardZ);
             }
-
         }
+        return cardsToBePlayed;
     }
 
     public static void main(String[] args) {

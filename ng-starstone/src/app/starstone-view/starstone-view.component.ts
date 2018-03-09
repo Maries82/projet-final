@@ -4,6 +4,7 @@ import {Card, CardOption} from '../model/card';
 import {Princess} from '../model/princess';
 import {Zerg} from '../model/zerg';
 import {Winner} from '../model/winner';
+import {PageServiceService} from "../page-service.service";
 
 @Component({
   selector: 'app-starstone-view',
@@ -50,7 +51,7 @@ export class StarstoneViewComponent implements OnInit {
     zergHand: []
   };
 
-  constructor(public dataService: DataService) {
+  constructor(public dataService: DataService, public pageService: PageServiceService) {
 
   }
 
@@ -59,6 +60,8 @@ export class StarstoneViewComponent implements OnInit {
 
   fetchZergDeck(){
     this.selectedZerg = true;
+    this.selectedZergHand = false;
+    this.gameStarted = false;
 
     this.dataService.fetchZergDeck()
       .then(zCards => this.zergCards = zCards.map(c => new CardOption(c)));
@@ -67,6 +70,8 @@ export class StarstoneViewComponent implements OnInit {
 
   fetchPrincessDeck(){
     this.selectedPrincess = true;
+    this.selectedPrincessHand = false;
+    this.gameStarted = false;
 
     this.dataService.fetchPrincessDeck()
       .then(pCards => this.princessCards = pCards.map(c => new CardOption(c)));

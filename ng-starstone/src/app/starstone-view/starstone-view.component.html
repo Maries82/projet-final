@@ -10,7 +10,7 @@
       <button *ngIf="selectedPrincess" class="princessDeckButton" (click)="selectRandomPrincessHand()">Pick 8 cards</button>
     </p>
 
-    <section *ngIf="selectedPrincess">
+    <section *ngIf="selectedPrincess && !gameStarted">
       <div class="princessDeck">
         <div class="cardPrincess" *ngFor="let option of princessCards">
 
@@ -31,17 +31,26 @@
       <button class="princessDeckButton" (click)="getPrincessHand()">Validate</button>
     </section>
 
-    <section *ngIf="selectedPrincessHand">
-      <div class="princessDeck">
-        <div class="cardPrincess" *ngFor="let card of princessHand">
+    <section *ngIf="selectedPrincessHand ">
+      <div *ngFor="let card of princessHand">
+
+        <div class="cardPrincess" >
+
           <div class="top">{{card.up}}</div>
           <div class="right">{{card.right}}</div>
           <div class="bottom">{{card.down}}</div>
           <div class="left">{{card.left}}</div>
+
+
         </div>
+
+<!--        <input
+          value="Up"
+          type="button">
+        <input
+          value=""
+          type="button">-->
       </div>
-
-
 
     </section>
 
@@ -63,12 +72,17 @@
     </div>
 
     <br>
+
+    <p>
+      <button id="toggle"(click)="pageService.toggle()">Buy some cards</button>
+    </p>
+
     <section>
       <p>
       <button class="party" (click)="launchGame()">Start Game</button>
       </p>
 
-      <p>
+      <p *ngIf="gameStarted">
         {{resultWinner?.name}}
       </p>
 
