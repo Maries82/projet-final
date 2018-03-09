@@ -17,11 +17,11 @@
         <div class="bottom">{{option.card.down}}</div>
         <div class="left">{{option.card.left}}</div>
 
-          <input
-            type="checkbox"
-            [checked] = false
-            name="checkPrincess"
-            [(ngModel)]="option.selected">
+        <input
+          type="checkbox"
+          [checked]=false
+          name="checkPrincess"
+          [(ngModel)]="option.selected">
       </div>
 
       <div>
@@ -29,7 +29,6 @@
       </div>
 
     </section>
-
 
 
   </div>
@@ -53,12 +52,12 @@
       <button class="party" (click)="launchGame()">Start Game</button>
     </p>
 
-    <p *ngIf="gameStarted">
-      {{resultWinner.name}}
+    <p>
+      {{resultWinner?.name}}
     </p>
 
     <!--<ul>-->
-      <!--<li *ngFor="let card of resultList">{{card.name}}</li>-->
+    <!--<li *ngFor="let card of resultList">{{card.name}}</li>-->
 
     <!--</ul>-->
 
@@ -81,11 +80,11 @@
         <div class="right">{{option.card.right}}</div>
         <div class="bottom">{{option.card.down}}</div>
         <div class="left">{{option.card.left}}</div>
-          <input
-            type="checkbox"
-            [checked] = false
-            name="checkZerg"
-            [(ngModel)]="option.selected">
+        <input
+          type="checkbox"
+          [checked]=false
+          name="checkZerg"
+          [(ngModel)]="option.selected">
 
 
       </div>
@@ -99,14 +98,14 @@
 
 </div>
 
-  <div class="gameContainer">
-    <div class="carre" *ngFor="let card of resultList">
-      <div class="top">{{card.up}}</div>
-      <div class="right">{{card.right}}</div>
-      <div class="bottom">{{card.down}}</div>
-      <div class="left">{{card.left}}</div>
-    </div>
-
+<div class="gameContainer">
+  <div class="carre" *ngFor="let card of resultList">
+    <div class="top">{{card.up}}</div>
+    <div class="right">{{card.right}}</div>
+    <div class="bottom">{{card.down}}</div>
+    <div class="left">{{card.left}}</div>
   </div>
+
+</div>
 
 

@@ -1,7 +1,7 @@
-export class Winner{
+export class Winner {
 
-  id:number;
-  name:String;
+  id: number;
+  name: String;
 
   //winners: Winner[] = [];
 }
