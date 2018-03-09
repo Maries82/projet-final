@@ -3,7 +3,6 @@ package io.pax.starstone.dao;
 import io.pax.starstone.domain.Game;
 import io.pax.starstone.domain.Winner;
 
-import javax.xml.registry.infomodel.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
