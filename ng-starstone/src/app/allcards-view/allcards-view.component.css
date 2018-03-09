@@ -4,17 +4,38 @@ h1{
   text-align: center;
 }
 
+.party {
+  border-radius: 8px;
+  font-size: 16px;
+  font-family:"Comic Sans MS";
+  background-color: #f44336;
+  color: white;
+  width:20%;
+  height : 50px;
+  horiz-align:center;
+
+}
+
+[type="checkbox"] {
+  width: 14px;
+  height: 14px; /* dim. de la case */
+}
+
 .carre{
   width: 100px;
   height: 100px;
   margin: 4px;
   float: left;
   position: relative;
+  background-image:url(https://www.crypto-banque.com/wp-content/uploads/2017/07/bitcoin2-100x100.jpg);
+
 }
 
 .carre > * {
   position: absolute;
-  color: blue;
+  color: firebrick;
+  font-family: "Comic Sans MS";
+  font-size: 18px;
 }
 
 .carre > .top {
@@ -37,4 +58,10 @@ h1{
 .carre > .left {
   left: 5px;
   line-height: 100px;
+}
+
+.carre > .check{
+  width: 100%;
+  left : 38px;
+  top : 1px;
 }

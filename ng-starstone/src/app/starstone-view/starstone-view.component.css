@@ -191,7 +191,7 @@
 }
 
 .resultWinner{
-  transform: scale(2,3);
+  transform: scale(1.5,1.5);
   font-family:"Comic Sans MS";
   color: #f44336;
   width: 40%;
